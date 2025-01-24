@@ -34,6 +34,7 @@ interface DayData {
   date: string;
   dosage: number;
   symptom?: string;
+  medicineName?: string;
 }
 
 interface SymptomsGraph {
@@ -60,15 +61,16 @@ const exportToCSV = (data: DayData[], graphName: string) => {
 
   // Create CSV content
   const csvContent = [
-    ['Date', 'Symptom', 'Dosage'].join(','), // Header
+    ['Date', 'Medicine Name', 'Symptom', 'Dosage'].join(','), // Updated header
     ...filteredData.map(row => [
       row.date,
+      row.medicineName || '',  // Add medicine name
       row.symptom || '',
       row.dosage
     ].join(',')),
     '', // Empty line for spacing
-    ['Total Dosage', '', totalDosage].join(','),
-    ['Average Dosage', '', avgDosage.toFixed(2)].join(',')
+    ['Total Dosage', '', '', totalDosage].join(','),
+    ['Average Dosage', '', '', avgDosage.toFixed(2)].join(',')
   ].join('\n');
 
   // Create blob and download link
@@ -108,6 +110,12 @@ export default function SymptomsTrackerPage() {
   const [currentWeekStart, setCurrentWeekStart] = useState<Date>(
     getWeekStart(new Date())
   );
+  const [newMedicineName, setNewMedicineName] = useState("");
+  const [formErrors, setFormErrors] = useState({
+    medicineName: '',
+    dosage: '',
+    date: ''
+  });
 
   useEffect(() => {
     dispatch(initializeTheme());
@@ -202,9 +210,11 @@ export default function SymptomsTrackerPage() {
     if (dayData) {
       setNewDosage(dayData.dosage.toString());
       setNewSymptom(dayData.symptom || '');
+      setNewMedicineName(dayData.medicineName || '');
     } else {
       setNewDosage('');
       setNewSymptom('');
+      setNewMedicineName('');
     }
     
     setIsUpdateDialogOpen(true);
@@ -215,56 +225,76 @@ export default function SymptomsTrackerPage() {
   };
 
   const handleDosageSubmit = () => {
-    // Remove the newDosage check since it's now optional
-    // Check if at least one of dosage or symptom is provided
-    if (!newDosage && !newSymptom) {
-      alert("Please enter either a dosage or symptom");
-      return;
+    // Reset previous errors
+    setFormErrors({
+      medicineName: '',
+      dosage: '',
+      date: ''
+    });
+
+    let hasError = false;
+
+    if (!newMedicineName.trim()) {
+      setFormErrors(prev => ({
+        ...prev,
+        medicineName: 'Medicine name is required'
+      }));
+      hasError = true;
     }
 
-    // Check if selected date is in the future
+    if (!newDosage) {
+      setFormErrors(prev => ({
+        ...prev,
+        dosage: 'Dosage is required'
+      }));
+      hasError = true;
+    }
+
     const selectedDateObj = new Date(selectedDate);
     const today = new Date();
     
-    // Reset time portions to compare dates only
     selectedDateObj.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
 
     if (selectedDateObj.getTime() > today.getTime()) {
-      alert("Cannot add data for future dates");
+      setFormErrors(prev => ({
+        ...prev,
+        date: 'Cannot add data for future dates'
+      }));
+      hasError = true;
+    }
+
+    if (hasError) {
       return;
     }
 
-    // Convert dosage to number, or use 0 if empty
-    const dosageValue = newDosage ? Math.min(Number(newDosage), 20) : 0;
+    const dosageValue = Math.min(Number(newDosage), 20);
     const dayOfWeek = DAYS[selectedDateObj.getDay()];
 
     setGraphs(
       graphs.map((graph) => {
         if (graph.id === selectedGraphId) {
-          // Check if an entry for this date already exists
           const existingDataIndex = graph.data.findIndex(
             (d) => d.date === selectedDate
           );
 
           if (existingDataIndex >= 0) {
-            // Update existing entry
             const newData = [...graph.data];
             newData[existingDataIndex] = {
               ...newData[existingDataIndex],
               dosage: dosageValue,
               symptom: newSymptom,
+              medicineName: newMedicineName,
             };
             return { ...graph, data: newData };
           } else {
-            // Add new entry
             const newData = [...graph.data, {
               day: dayOfWeek,
               date: selectedDate,
               dosage: dosageValue,
               symptom: newSymptom,
+              medicineName: newMedicineName,
             }];
-            // Sort by date
             newData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
             return { ...graph, data: newData };
           }
@@ -275,6 +305,7 @@ export default function SymptomsTrackerPage() {
     setIsUpdateDialogOpen(false);
     setNewDosage("");
     setNewSymptom("");
+    setNewMedicineName("");
   };
 
   const handleUpdateName = async (graphId: string) => {
@@ -359,10 +390,16 @@ export default function SymptomsTrackerPage() {
         day: day,
         date: dateStr,
         dosage: existingData ? existingData.dosage : 0,
-        symptom: existingData?.symptom
+        symptom: existingData?.symptom,
+        medicineName: existingData?.medicineName
       };
     });
   }
+
+  // Add this function to check if form is valid
+  const isFormValid = () => {
+    return newMedicineName.trim() !== '' && newDosage !== '';
+  };
 
   return (
     <div className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 overflow-x-hidden`}>
@@ -520,28 +557,69 @@ export default function SymptomsTrackerPage() {
                     id="date"
                     type="date"
                     value={selectedDate}
-                    onChange={(e) => setSelectedDate(e.target.value)}
+                    onChange={(e) => {
+                      setSelectedDate(e.target.value);
+                      setFormErrors(prev => ({ ...prev, date: '' }));
+                    }}
                     max={new Date().toISOString().split('T')[0]}
-                    className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
+                    className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
+                      formErrors.date ? 'border-red-500' : ''
+                    }`}
                   />
+                  {formErrors.date && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.date}</p>
+                  )}
+                </div>
+                <div>
+                  <Label
+                    htmlFor="medicineName"
+                    className="text-[#4A4947] dark:text-[#FAF7F0]"
+                  >
+                    Medicine Name <span className="text-red-500">*</span>
+                  </Label>
+                  <Input
+                    id="medicineName"
+                    value={newMedicineName}
+                    onChange={(e) => {
+                      setNewMedicineName(e.target.value);
+                      setFormErrors(prev => ({ ...prev, medicineName: '' }));
+                    }}
+                    placeholder="Enter medicine name"
+                    className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
+                      formErrors.medicineName ? 'border-red-500' : ''
+                    }`}
+                    required
+                  />
+                  {formErrors.medicineName && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.medicineName}</p>
+                  )}
                 </div>
                 <div>
                   <Label
                     htmlFor="dosage"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Enter dosage
+                    Enter dosage <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="dosage"
                     type="number"
                     value={newDosage}
-                    onChange={(e) => setNewDosage(e.target.value)}
+                    onChange={(e) => {
+                      setNewDosage(e.target.value);
+                      setFormErrors(prev => ({ ...prev, dosage: '' }));
+                    }}
                     placeholder="Enter dosage"
                     min="0"
                     max="20"
-                    className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
+                    className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
+                      formErrors.dosage ? 'border-red-500' : ''
+                    }`}
+                    required
                   />
+                  {formErrors.dosage && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.dosage}</p>
+                  )}
                 </div>
                 <div>
                   <Label
@@ -560,7 +638,8 @@ export default function SymptomsTrackerPage() {
                 </div>
                 <Button
                   onClick={handleDosageSubmit}
-                  className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300"
+                  className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!isFormValid()}
                 >
                   Update Dosage
                 </Button>
@@ -723,6 +802,9 @@ export default function SymptomsTrackerPage() {
                             return [
                               <>
                                 <div className="font-semibold">{dataPoint.date}</div>
+                                {dataPoint.medicineName && (
+                                  <div className="text-sm">{`Medicine: ${dataPoint.medicineName}`}</div>
+                                )}
                                 <div>{`${value} doses`}</div>
                                 {dataPoint.symptom && (
                                   <div className="text-sm opacity-80">{`Symptoms: ${dataPoint.symptom}`}</div>
