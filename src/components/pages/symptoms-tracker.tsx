@@ -33,6 +33,7 @@ interface DayData {
   day: string;
   date: string;
   dosage: number;
+  unit: string;
   symptom?: string;
   medicineName?: string;
 }
@@ -61,16 +62,17 @@ const exportToCSV = (data: DayData[], graphName: string) => {
 
   // Create CSV content
   const csvContent = [
-    ['Date', 'Medicine Name', 'Symptom', 'Dosage'].join(','), // Updated header
+    ['Date', 'Medicine Name', 'Unit', 'Symptom', 'Dosage'].join(','), // Moved Unit after Medicine Name
     ...filteredData.map(row => [
       row.date,
-      row.medicineName || '',  // Add medicine name
+      row.medicineName || '',
+      row.unit || '',  // Moved unit here
       row.symptom || '',
       row.dosage
     ].join(',')),
     '', // Empty line for spacing
-    ['Total Dosage', '', '', totalDosage].join(','),
-    ['Average Dosage', '', '', avgDosage.toFixed(2)].join(',')
+    ['Total Dosage', '', '', '', totalDosage].join(','),
+    ['Average Dosage', '', '', '', avgDosage.toFixed(2)].join(',')
   ].join('\n');
 
   // Create blob and download link
@@ -111,11 +113,24 @@ export default function SymptomsTrackerPage() {
     getWeekStart(new Date())
   );
   const [newMedicineName, setNewMedicineName] = useState("");
+  const [newUnit, setNewUnit] = useState("mg");
   const [formErrors, setFormErrors] = useState({
     medicineName: '',
     dosage: '',
-    date: ''
+    date: '',
+    unit: ''
   });
+
+  // Define available units
+  const DOSAGE_UNITS = [
+    "mg", // milligrams
+    "g",  // grams
+    "ml", // milliliters
+    "mcg", // micrograms
+    "IU", // International Units
+    "tablets",
+    "capsules"
+  ];
 
   useEffect(() => {
     dispatch(initializeTheme());
@@ -193,6 +208,7 @@ export default function SymptomsTrackerPage() {
             day: DAYS[i],
             date: date.toISOString().split('T')[0],
             dosage: 0,
+            unit: "mg",
           };
         }),
       };
@@ -211,10 +227,12 @@ export default function SymptomsTrackerPage() {
       setNewDosage(dayData.dosage.toString());
       setNewSymptom(dayData.symptom || '');
       setNewMedicineName(dayData.medicineName || '');
+      setNewUnit(dayData.unit || 'mg');
     } else {
       setNewDosage('');
       setNewSymptom('');
       setNewMedicineName('');
+      setNewUnit('mg');
     }
     
     setIsUpdateDialogOpen(true);
@@ -229,7 +247,8 @@ export default function SymptomsTrackerPage() {
     setFormErrors({
       medicineName: '',
       dosage: '',
-      date: ''
+      date: '',
+      unit: ''
     });
 
     let hasError = false;
@@ -264,6 +283,14 @@ export default function SymptomsTrackerPage() {
       hasError = true;
     }
 
+    if (!newUnit) {
+      setFormErrors(prev => ({
+        ...prev,
+        unit: 'Unit is required'
+      }));
+      hasError = true;
+    }
+
     if (hasError) {
       return;
     }
@@ -283,6 +310,7 @@ export default function SymptomsTrackerPage() {
             newData[existingDataIndex] = {
               ...newData[existingDataIndex],
               dosage: dosageValue,
+              unit: newUnit,
               symptom: newSymptom,
               medicineName: newMedicineName,
             };
@@ -292,6 +320,7 @@ export default function SymptomsTrackerPage() {
               day: dayOfWeek,
               date: selectedDate,
               dosage: dosageValue,
+              unit: newUnit,
               symptom: newSymptom,
               medicineName: newMedicineName,
             }];
@@ -306,6 +335,7 @@ export default function SymptomsTrackerPage() {
     setNewDosage("");
     setNewSymptom("");
     setNewMedicineName("");
+    setNewUnit("mg");
   };
 
   const handleUpdateName = async (graphId: string) => {
@@ -390,6 +420,7 @@ export default function SymptomsTrackerPage() {
         day: day,
         date: dateStr,
         dosage: existingData ? existingData.dosage : 0,
+        unit: existingData ? existingData.unit : "mg",
         symptom: existingData?.symptom,
         medicineName: existingData?.medicineName
       };
@@ -498,7 +529,7 @@ export default function SymptomsTrackerPage() {
                   <Button 
                     className="flex-1 sm:flex-none bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30"
                   >
-                    <Plus className="mr-2 h-4 w-4" /> New Record
+                    <Plus className="mr-2 h-4 w-4" /> My Record
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="bg-[#FAF7F0] dark:bg-[#4A4947] border border-[#D8D2C2] dark:border-[#B17457]">
@@ -522,6 +553,35 @@ export default function SymptomsTrackerPage() {
                         placeholder="Enter symptom name"
                         className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
                       />
+                    </div>
+                    <div>
+                      <Label
+                        htmlFor="unit"
+                        className="text-[#4A4947] dark:text-[#FAF7F0]"
+                      >
+                        Unit <span className="text-red-500">*</span>
+                      </Label>
+                      <select
+                        id="unit"
+                        value={newUnit}
+                        onChange={(e) => {
+                          setNewUnit(e.target.value);
+                          setFormErrors(prev => ({ ...prev, unit: '' }));
+                        }}
+                        className={`w-full mt-1 px-3 py-2 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] rounded-md border ${
+                          formErrors.unit ? 'border-red-500' : 'border-[#B17457]/20'
+                        } focus:outline-none focus:ring-2 focus:ring-[#B17457] focus:border-transparent`}
+                        required
+                      >
+                        {DOSAGE_UNITS.map((unit) => (
+                          <option key={unit} value={unit}>
+                            {unit}
+                          </option>
+                        ))}
+                      </select>
+                      {formErrors.unit && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.unit}</p>
+                      )}
                     </div>
                     <Button
                       onClick={handleAddGraph}
@@ -619,6 +679,35 @@ export default function SymptomsTrackerPage() {
                   />
                   {formErrors.dosage && (
                     <p className="text-red-500 text-sm mt-1">{formErrors.dosage}</p>
+                  )}
+                </div>
+                <div>
+                  <Label
+                    htmlFor="unit"
+                    className="text-[#4A4947] dark:text-[#FAF7F0]"
+                  >
+                    Unit <span className="text-red-500">*</span>
+                  </Label>
+                  <select
+                    id="unit"
+                    value={newUnit}
+                    onChange={(e) => {
+                      setNewUnit(e.target.value);
+                      setFormErrors(prev => ({ ...prev, unit: '' }));
+                    }}
+                    className={`w-full mt-1 px-3 py-2 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] rounded-md border ${
+                      formErrors.unit ? 'border-red-500' : 'border-[#B17457]/20'
+                    } focus:outline-none focus:ring-2 focus:ring-[#B17457] focus:border-transparent`}
+                    required
+                  >
+                    {DOSAGE_UNITS.map((unit) => (
+                      <option key={unit} value={unit}>
+                        {unit}
+                      </option>
+                    ))}
+                  </select>
+                  {formErrors.unit && (
+                    <p className="text-red-500 text-sm mt-1">{formErrors.unit}</p>
                   )}
                 </div>
                 <div>
@@ -805,7 +894,7 @@ export default function SymptomsTrackerPage() {
                                 {dataPoint.medicineName && (
                                   <div className="text-sm">{`Medicine: ${dataPoint.medicineName}`}</div>
                                 )}
-                                <div>{`${value} doses`}</div>
+                                <div>{`${value} ${dataPoint.unit || 'doses'}`}</div>
                                 {dataPoint.symptom && (
                                   <div className="text-sm opacity-80">{`Symptoms: ${dataPoint.symptom}`}</div>
                                 )}
