@@ -354,6 +354,13 @@ export default function HomePage() {
                     >
                       Symptoms Tracker
                     </Link>
+                    <Link
+                      href="/medical-history"
+                      className="block px-4 py-2 text-sm text-[#4A4947] dark:text-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]"
+                      role="menuitem"
+                    >
+                      Medical History
+                    </Link>
                   </div>
                 </div>
               </div>

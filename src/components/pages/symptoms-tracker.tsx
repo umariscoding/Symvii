@@ -91,6 +91,86 @@ function getShortDay(day: string): string {
   return day.charAt(0);
 }
 
+// Add this constant for symptoms list
+const SYMPTOMS_LIST = [
+  "Acid and chemical burns",
+  "Allergies",
+  "Animal and human bites",
+  "Ankle problems",
+  "Back problems",
+  "Blisters",
+  "Bowel incontinence",
+  "Breast pain",
+  "Breast swelling in men",
+  "Breathlessness and cancer",
+  "Burns and scalds",
+  "Calf problems",
+  "Cancer-related fatigue",
+  "Catarrh",
+  "Chronic pain",
+  "Constipation",
+  "Cold sore",
+  "Cough",
+  "Cuts and grazes",
+  "Chest pain",
+  "Dehydration",
+  "Diarrhoea",
+  "Dizziness (lightheadedness)",
+  "Dry mouth",
+  "Earache",
+  "Eating and digestion with cancer",
+  "Elbow problems",
+  "Farting",
+  "Feeling of something in your throat (Globus)",
+  "Fever in adults",
+  "Fever in children",
+  "Flu",
+  "Foot problems",
+  "Genital symptoms",
+  "Hair loss and cancer",
+  "Hay fever",
+  "Headaches",
+  "Hearing loss",
+  "Hip problems",
+  "Indigestion",
+  "Itchy bottom",
+  "Itchy skin",
+  "Insect bites and stings",
+  "Knee problems",
+  "Living well with COPD",
+  "Living with chronic pain",
+  "Migraine",
+  "Mouth ulcer",
+  "Neck problems",
+  "Nipple discharge",
+  "Nipple inversion (inside out nipple)",
+  "Nosebleed",
+  "Pain and cancer",
+  "Skin rashes in children",
+  "Shortness of breath",
+  "Shoulder problems",
+  "Soft tissue injury advice",
+  "Sore throat",
+  "Stomach ache and abdominal pain",
+  "Sunburn",
+  "Swollen glands",
+  "Testicular lumps and swellings",
+  "Thigh problems",
+  "Tick bites",
+  "Tinnitus",
+  "Toothache",
+  "Urinary incontinence",
+  "Urinary incontinence in women",
+  "Urinary tract infection (UTI)",
+  "Urinary tract infection (UTI) in children",
+  "Vaginal discharge",
+  "Vertigo",
+  "Vomiting in adults",
+  "Vomiting in children and babies",
+  "Warts and verrucas",
+  "Wrist, hand and finger problems"
+];
+
 export default function SymptomsTrackerPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -120,6 +200,7 @@ export default function SymptomsTrackerPage() {
     date: '',
     unit: ''
   });
+  const [symptomSuggestions, setSymptomSuggestions] = useState<string[]>([]);
 
   // Define available units
   const DOSAGE_UNITS = [
@@ -432,6 +513,29 @@ export default function SymptomsTrackerPage() {
     return newMedicineName.trim() !== '' && newDosage !== '';
   };
 
+  // Add this function to handle symptom input changes
+  const handleSymptomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setNewSymptom(value);
+    setFormErrors(prev => ({ ...prev, symptom: '' }));
+
+    // Filter suggestions based on input
+    if (value.length > 0) {
+      const filtered = SYMPTOMS_LIST.filter(symptom =>
+        symptom.toLowerCase().includes(value.toLowerCase())
+      );
+      setSymptomSuggestions(filtered);
+    } else {
+      setSymptomSuggestions([]);
+    }
+  };
+
+  // Add this function to handle suggestion selection
+  const handleSymptomSuggestionClick = (suggestion: string) => {
+    setNewSymptom(suggestion);
+    setSymptomSuggestions([]);
+  };
+
   return (
     <div className={`min-h-screen bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark transition-colors duration-300 overflow-x-hidden`}>
       <div className="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark min-h-screen">
@@ -553,35 +657,6 @@ export default function SymptomsTrackerPage() {
                         placeholder="Enter symptom name"
                         className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
                       />
-                    </div>
-                    <div>
-                      <Label
-                        htmlFor="unit"
-                        className="text-[#4A4947] dark:text-[#FAF7F0]"
-                      >
-                        Unit <span className="text-red-500">*</span>
-                      </Label>
-                      <select
-                        id="unit"
-                        value={newUnit}
-                        onChange={(e) => {
-                          setNewUnit(e.target.value);
-                          setFormErrors(prev => ({ ...prev, unit: '' }));
-                        }}
-                        className={`w-full mt-1 px-3 py-2 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] rounded-md border ${
-                          formErrors.unit ? 'border-red-500' : 'border-[#B17457]/20'
-                        } focus:outline-none focus:ring-2 focus:ring-[#B17457] focus:border-transparent`}
-                        required
-                      >
-                        {DOSAGE_UNITS.map((unit) => (
-                          <option key={unit} value={unit}>
-                            {unit}
-                          </option>
-                        ))}
-                      </select>
-                      {formErrors.unit && (
-                        <p className="text-red-500 text-sm mt-1">{formErrors.unit}</p>
-                      )}
                     </div>
                     <Button
                       onClick={handleAddGraph}
@@ -717,13 +792,28 @@ export default function SymptomsTrackerPage() {
                   >
                     Enter symptoms (optional)
                   </Label>
-                  <Input
-                    id="symptom"
-                    value={newSymptom}
-                    onChange={(e) => setNewSymptom(e.target.value)}
-                    placeholder="Enter symptoms"
-                    className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
-                  />
+                  <div className="relative">
+                    <Input
+                      id="symptom"
+                      value={newSymptom}
+                      onChange={handleSymptomChange}
+                      placeholder="Enter symptoms"
+                      className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
+                    />
+                    {symptomSuggestions.length > 0 && (
+                      <div className="absolute z-10 w-full mt-1 bg-white dark:bg-[#3A3937] border border-[#D8D2C2] dark:border-[#B17457] rounded-md shadow-lg max-h-60 overflow-y-auto">
+                        {symptomSuggestions.map((suggestion, index) => (
+                          <div
+                            key={index}
+                            className="px-4 py-2 cursor-pointer hover:bg-[#B17457]/10 text-[#4A4947] dark:text-[#FAF7F0]"
+                            onClick={() => handleSymptomSuggestionClick(suggestion)}
+                          >
+                            {suggestion}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <Button
                   onClick={handleDosageSubmit}
