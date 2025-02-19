@@ -19,6 +19,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useTranslation } from 'react-i18next';
 
 interface Condition {
   id: string;
@@ -48,6 +49,7 @@ export default function MedicalHistoryPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [medicationInput, setMedicationInput] = useState("");
+  const { t } = useTranslation();
 
   const CONDITIONS_LIST = [
     "Abdominal aortic aneurysm",
@@ -489,13 +491,13 @@ export default function MedicalHistoryPage() {
           const data = await response.json();
           setConditions(Array.isArray(data) ? data : []);
         } catch (error) {
-          console.error("Error fetching conditions:", error);
+          console.error(t('medicalHistory.messages.fetchError'), error);
           setConditions([]);
         }
       }
     };
     fetchConditions();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, t]);
 
   const handleDarkModeToggle = () => {
     dispatch(toggleDarkMode());
@@ -506,8 +508,8 @@ export default function MedicalHistoryPage() {
 
     // Validate form
     const errors = {
-      title: !newCondition.title ? "Title is required" : "",
-      description: !newCondition.description ? "Description is required" : "",
+      title: !newCondition.title ? t('medicalHistory.messages.validation.title') : "",
+      description: !newCondition.description ? t('medicalHistory.messages.validation.description') : "",
     };
 
     if (Object.values(errors).some((error) => error)) {
@@ -546,7 +548,7 @@ export default function MedicalHistoryPage() {
         setIsDialogOpen(false);
       }
     } catch (error) {
-      console.error("Error adding condition:", error);
+      console.error(t('medicalHistory.messages.addError'), error);
     }
   };
 
@@ -558,7 +560,7 @@ export default function MedicalHistoryPage() {
       });
       setConditions(conditions.filter((condition) => condition.id !== id));
     } catch (error) {
-      console.error("Error deleting condition:", error);
+      console.error(t('medicalHistory.messages.deleteError'), error);
     }
   };
 
@@ -662,8 +664,8 @@ export default function MedicalHistoryPage() {
                   href="/"
                   className="text-[#4A4947] dark:text-[#D8D2C2] hover:text-[#B17457] dark:hover:text-[#B17457] hidden sm:block"
                 >
-                  Home
-                </Link>
+                  {t('login.navigation.home')}
+                  </Link>
               </div>
               <Button
                 onClick={handleDarkModeToggle}
@@ -685,14 +687,14 @@ export default function MedicalHistoryPage() {
         <div className="container mx-auto px-4 pt-24 sm:pt-28 pb-16">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-10 text-center bg-gradient-to-r from-[#B17457] to-[#D8935D] bg-clip-text text-transparent">
-              Medical History
+              {t('medicalHistory.title')}
             </h1>
             
             {/* Search and Quick Actions - Updated layout */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8 sm:mb-10">
               <div className="flex-1 relative">
                 <Input
-                  placeholder="Search conditions..."
+                  placeholder={t('medicalHistory.search.placeholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="bg-white/80 dark:bg-[#3A3937]/80 backdrop-blur-sm text-[#4A4947] dark:text-[#FAF7F0] pl-10 h-12 rounded-xl border-2 border-[#D8D2C2] dark:border-[#3A3937] focus:ring-2 focus:ring-[#B17457] focus:border-transparent transition-all duration-200"
@@ -717,13 +719,13 @@ export default function MedicalHistoryPage() {
                   <Button 
                     className="bg-gradient-to-r from-[#B17457] to-[#D8935D] hover:from-[#B17457]/90 hover:to-[#D8935D]/90 text-white transition-all duration-300 shadow-lg hover:shadow-xl h-12 px-6 rounded-xl font-medium"
                   >
-                    <Plus className="mr-2 h-5 w-5" /> Add Medical Condition
+                    <Plus className="mr-2 h-5 w-5" /> {t('medicalHistory.addCondition.button')}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="bg-[#FAF7F0] dark:bg-[#4A4947] border border-[#D8D2C2] dark:border-[#B17457] w-[95%] sm:w-full max-w-lg mx-auto">
                   <DialogHeader>
                     <DialogTitle className="text-[#4A4947] dark:text-[#FAF7F0] text-xl sm:text-2xl">
-                      Add Medical Condition
+                      {t('medicalHistory.addCondition.title')}
                     </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 pt-4">
@@ -732,14 +734,14 @@ export default function MedicalHistoryPage() {
                         htmlFor="title"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Condition Title <span className="text-red-500">*</span>
+                        {t('medicalHistory.addCondition.form.title.label')} <span className="text-red-500">*</span>
                       </Label>
                       <div className="relative">
                         <Input
                           id="title"
                           value={newCondition.title}
                           onChange={handleTitleChange}
-                          placeholder="Enter condition name"
+                          placeholder={t('medicalHistory.addCondition.form.title.placeholder')}
                           className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
                             formErrors.title ? "border-red-500" : ""
                           }`}
@@ -770,7 +772,7 @@ export default function MedicalHistoryPage() {
                         htmlFor="diagnosis_date"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Date of Diagnosis <span className="text-red-500">*</span>
+                        {t('medicalHistory.addCondition.form.diagnosisDate.label')} <span className="text-red-500">*</span>
                       </Label>
                       <Input
                         type="date"
@@ -789,14 +791,14 @@ export default function MedicalHistoryPage() {
                         htmlFor="medications"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Medications
+                        {t('medicalHistory.addCondition.form.medications.label')}
                       </Label>
                       <div className="flex gap-2">
                         <Input
                           id="medications"
                           value={medicationInput}
                           onChange={(e) => setMedicationInput(e.target.value)}
-                          placeholder="Enter medication name"
+                          placeholder={t('medicalHistory.addCondition.form.medications.placeholder')}
                           className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
                         />
                         <Button
@@ -804,7 +806,7 @@ export default function MedicalHistoryPage() {
                           onClick={handleAddMedication}
                           className="mt-1 bg-[#B17457] hover:bg-[#B17457]/90"
                         >
-                          Add
+                          {t('medicalHistory.addCondition.form.medications.addButton')}
                         </Button>
                       </div>
                       
@@ -830,7 +832,7 @@ export default function MedicalHistoryPage() {
                         htmlFor="description"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Description <span className="text-red-500">*</span>
+                        {t('medicalHistory.addCondition.form.description.label')} <span className="text-red-500">*</span>
                       </Label>
                       <Textarea
                         id="description"
@@ -842,7 +844,7 @@ export default function MedicalHistoryPage() {
                           });
                           setFormErrors((prev) => ({ ...prev, description: "" }));
                         }}
-                        placeholder="Enter condition details"
+                        placeholder={t('medicalHistory.addCondition.form.description.placeholder')}
                         className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
                           formErrors.description ? "border-red-500" : ""
                         }`}
@@ -858,7 +860,7 @@ export default function MedicalHistoryPage() {
                       onClick={handleSubmit}
                       className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300"
                     >
-                      Add Condition
+                      {t('medicalHistory.addCondition.form.submit')}
                     </Button>
                   </div>
                 </DialogContent>
@@ -883,7 +885,7 @@ export default function MedicalHistoryPage() {
                           <div className="flex flex-wrap gap-2">
                             {condition.diagnosis_date && (
                               <span className="px-4 py-1.5 rounded-full bg-[#FAF7F0] dark:bg-[#4A4947] text-sm text-[#4A4947] dark:text-[#D8D2C2] font-medium border border-[#B17457]/20 dark:border-[#D8D2C2]/20">
-                                Diagnosed: {new Date(condition.diagnosis_date).toLocaleDateString('en-US', {
+                                {t('medicalHistory.conditionCard.diagnosedLabel')}: {new Date(condition.diagnosis_date).toLocaleDateString('en-US', {
                                   year: 'numeric',
                                   month: 'short',
                                   day: 'numeric'
@@ -896,7 +898,7 @@ export default function MedicalHistoryPage() {
                         {/* Description Section - Updated styling */}
                         <div className="mb-5">
                           <h4 className="text-sm font-semibold text-[#4A4947] dark:text-[#FAF7F0] mb-2">
-                            Description
+                            {t('medicalHistory.conditionCard.descriptionLabel')}
                           </h4>
                           <p className="text-sm text-[#4A4947] dark:text-[#FAF7F0] leading-relaxed bg-[#FAF7F0] dark:bg-[#4A4947] p-4 rounded-xl border border-[#B17457]/10 dark:border-[#D8D2C2]/10">
                             {condition.description}
@@ -907,7 +909,7 @@ export default function MedicalHistoryPage() {
                         {condition.medications && condition.medications.length > 0 && (
                           <div>
                             <h4 className="text-sm font-semibold text-[#4A4947] dark:text-[#FAF7F0] mb-2">
-                              Current Medications
+                              {t('medicalHistory.conditionCard.medicationsLabel')}
                             </h4>
                             <div className="flex flex-wrap gap-2">
                               {condition.medications.map((med, index) => (
@@ -968,26 +970,28 @@ export default function MedicalHistoryPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-xl sm:text-2xl font-bold text-white">Symvii</span>
+                  <span className="text-xl sm:text-2xl font-bold text-white">
+                    {t('footer.brand.name')}
+                  </span>
                 </Link>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Empowering healthcare through AI-driven insights and
-                  personalized tracking, making health management seamless and
-                  intelligent.
+                  {t('footer.brand.description')}
                 </p>
               </div>
 
               {/* Navigation Links */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-x-16 w-full md:w-auto">
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Product</h3>
+                  <h3 className="text-white font-semibold mb-4">
+                    {t('footer.navigation.product.title')}
+                  </h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="#features"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Features
+                        {t('footer.navigation.product.items.features')}
                       </Link>
                     </li>
                     <li>
@@ -995,7 +999,7 @@ export default function MedicalHistoryPage() {
                         href="#benefits"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Benefits
+                        {t('footer.navigation.product.items.benefits')}
                       </Link>
                     </li>
                     <li>
@@ -1003,21 +1007,23 @@ export default function MedicalHistoryPage() {
                         href="#testimonials"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Testimonials
+                        {t('footer.navigation.product.items.testimonials')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Tools</h3>
+                  <h3 className="text-white font-semibold mb-4">
+                    {t('footer.navigation.tools.title')}
+                  </h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="/bmi-calculator"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        BMI Calculator
+                        {t('footer.navigation.tools.items.bmiCalculator')}
                       </Link>
                     </li>
                     <li>
@@ -1025,7 +1031,7 @@ export default function MedicalHistoryPage() {
                         href="/ai-doctor"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        AI Doctor
+                        {t('footer.navigation.tools.items.aiDoctor')}
                       </Link>
                     </li>
                     <li>
@@ -1033,21 +1039,23 @@ export default function MedicalHistoryPage() {
                         href="/symptoms-tracker"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Symptoms Tracker
+                        {t('footer.navigation.tools.items.symptomsTracker')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Support</h3>
+                  <h3 className="text-white font-semibold mb-4">
+                    {t('footer.navigation.support.title')}
+                  </h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="#faqs"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        FAQs
+                        {t('footer.navigation.support.items.faqs')}
                       </Link>
                     </li>
                     <li>
@@ -1055,14 +1063,16 @@ export default function MedicalHistoryPage() {
                         href="#contact"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Contact
+                        {t('footer.navigation.support.items.contact')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Connect</h3>
+                  <h3 className="text-white font-semibold mb-4">
+                    {t('footer.navigation.connect.title')}
+                  </h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
@@ -1070,7 +1080,7 @@ export default function MedicalHistoryPage() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Twitter
+                        {t('footer.navigation.connect.items.twitter')}
                       </Link>
                     </li>
                     <li>
@@ -1079,7 +1089,7 @@ export default function MedicalHistoryPage() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        LinkedIn
+                        {t('footer.navigation.connect.items.linkedin')}
                       </Link>
                     </li>
                     <li>
@@ -1088,7 +1098,7 @@ export default function MedicalHistoryPage() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        GitHub
+                        {t('footer.navigation.connect.items.github')}
                       </Link>
                     </li>
                   </ul>
@@ -1100,7 +1110,7 @@ export default function MedicalHistoryPage() {
             <div className="pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-gray-700">
               <div className="text-center">
                 <p className="text-gray-400 text-xs sm:text-sm">
-                  &copy; {new Date().getFullYear()} Symvii. All rights reserved.
+                  {t('footer.copyright.text', { year: new Date().getFullYear() })}
                 </p>
               </div>
             </div>

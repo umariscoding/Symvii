@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { toggleDarkMode, initializeTheme } from '@/redux/features/themeSlice';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 export default function AIDoctorPage() {
   const dispatch = useAppDispatch();
@@ -27,6 +28,7 @@ export default function AIDoctorPage() {
     age: '',
     country: ''
   });
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(initializeTheme());
@@ -82,7 +84,7 @@ export default function AIDoctorPage() {
       setResult(data.data.consultation)
     } catch (error) {
       console.error('Error:', error)
-      setResult('An error occurred while processing your request. Please try again.')
+      setResult(t('aiDoctor.error.message'))
     } finally {
       setIsLoading(false)
     }
@@ -105,10 +107,10 @@ export default function AIDoctorPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">Symvii</span>
+                  <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">{t('branding.name')}</span>
                 </Link>
                 <Link href="/" className="text-[#4A4947] dark:text-[#D8D2C2] hover:text-[#B17457] dark:hover:text-[#B17457]">
-                  Home
+                  {t('aiDoctor.navigation.home')}
                 </Link>
               </div>
               <Button onClick={handleDarkModeToggle} variant="ghost" size="icon">
@@ -119,17 +121,17 @@ export default function AIDoctorPage() {
         </nav>
 
         <div className="container mx-auto px-4 pt-24 pb-16">
-          <h1 className="text-4xl font-bold mb-8 text-center">AI Doctor Consultation</h1>
+          <h1 className="text-4xl font-bold mb-8 text-center">{t('aiDoctor.consultation.title')}</h1>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <Label htmlFor="symptom">Enter symptom</Label>
+                    <Label htmlFor="symptom">{t('aiDoctor.consultation.form.symptom.label')}</Label>
                     <Textarea
                       id="symptom"
                       name="symptom"
-                      placeholder="Describe your symptoms here..."
+                      placeholder={t('aiDoctor.consultation.form.symptom.placeholder')}
                       className="mt-1 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                       rows={4}
                       value={formData.symptom}
@@ -137,51 +139,51 @@ export default function AIDoctorPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="sex">Sex at birth</Label>
+                    <Label htmlFor="sex">{t('aiDoctor.consultation.form.sex.label')}</Label>
                     <Select onValueChange={handleSelectChange} value={formData.sex}>
                       <SelectTrigger className="w-full mt-1 pl-3 bg-white dark:bg-background-dark shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light">
-                        <SelectValue placeholder="Select" />
+                        <SelectValue placeholder={t('aiDoctor.consultation.form.sex.placeholder')} />
                       </SelectTrigger>
                       <SelectContent className="bg-white dark:bg-background-dark shadow-md dark:shadow-background-dark/30">
                         <SelectItem 
                           value="male" 
                           className="text-[#4A4947] dark:text-[#FAF7F0] hover:bg-background-secondary-light dark:hover:bg-primary/20 transition-colors duration-300"
                         >
-                          Male
+                          {t('aiDoctor.consultation.form.sex.options.male')}
                         </SelectItem>
                         <SelectItem 
                           value="female" 
                           className="text-[#4A4947] dark:text-[#FAF7F0] hover:bg-background-secondary-light dark:hover:bg-primary/20 transition-colors duration-300"
                         >
-                          Female
+                          {t('aiDoctor.consultation.form.sex.options.female')}
                         </SelectItem>
                         <SelectItem 
                           value="other" 
                           className="text-[#4A4947] dark:text-[#FAF7F0] hover:bg-background-secondary-light dark:hover:bg-primary/20 transition-colors duration-300"
                         >
-                          Other
+                          {t('aiDoctor.consultation.form.sex.options.other')}
                         </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div>
-                    <Label htmlFor="age">Age</Label>
+                    <Label htmlFor="age">{t('aiDoctor.consultation.form.age.label')}</Label>
                     <Input 
                       type="number" 
                       id="age" 
                       name="age"
-                      placeholder="Enter your age" 
+                      placeholder={t('aiDoctor.consultation.form.age.placeholder')}
                       className="mt-1 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                       value={formData.age}
                       onChange={handleInputChange}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="country">Country of residence or recently visited</Label>
+                    <Label htmlFor="country">{t('aiDoctor.consultation.form.country.label')}</Label>
                     <Input 
                       id="country" 
                       name="country"
-                      placeholder="Enter country" 
+                      placeholder={t('aiDoctor.consultation.form.country.placeholder')}
                       className="mt-1 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                       value={formData.country}
                       onChange={handleInputChange}
@@ -192,26 +194,22 @@ export default function AIDoctorPage() {
                     className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 ease-in-out shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Analyzing...' : 'Submit'}
+                    {isLoading ? t('aiDoctor.consultation.form.submit.analyzing') : t('aiDoctor.consultation.form.submit.default')}
                   </Button>
                 </form>
               </CardContent>
             </Card>
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-semibold mb-4">AI Doctor Disclaimer</h2>
-                <p className="mb-4">
-                  This AI doctor is for informational purposes only and does not replace professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.
-                </p>
+                <h2 className="text-2xl font-semibold mb-4">{t('aiDoctor.disclaimer.title')}</h2>
+                <p className="mb-4">{t('aiDoctor.disclaimer.description')}</p>
                 <ul className="list-disc list-inside space-y-2 mb-4">
-                  <li>Provides general health information</li>
-                  <li>Not a substitute for professional medical advice</li>
-                  <li>Cannot diagnose specific conditions</li>
-                  <li>Seek immediate medical attention for emergencies</li>
+                  <li>{t('aiDoctor.disclaimer.point1')}</li>
+                  <li>{t('aiDoctor.disclaimer.point2')}</li>
+                  <li>{t('aiDoctor.disclaimer.point3')}</li>
+                  <li>{t('aiDoctor.disclaimer.point4')}</li>
                 </ul>
-                <p className="mb-4">
-                  Remember, your health is important. When in doubt, always consult with a healthcare professional.
-                </p>
+                <p className="mb-4">{t('aiDoctor.disclaimer.reminder')}</p>
                 <a 
                   href="https://en.wikipedia.org/wiki/Artificial_intelligence_in_healthcare"
                   target="_blank"
@@ -219,7 +217,7 @@ export default function AIDoctorPage() {
                   className="w-full"
                 >
                   <Button className="w-full bg-[#B17457] hover:bg-[#D8D2C2] text-[#FAF7F0] transition-all duration-300 ease-in-out shadow-md hover:shadow-lg dark:shadow-[#B17457]/30">
-                    Learn More About AI in Healthcare <ArrowRight className="ml-2 h-4 w-4" />
+                    {t('aiDoctor.disclaimer.learnMore')} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
               </CardContent>
@@ -228,7 +226,7 @@ export default function AIDoctorPage() {
           {result && (
             <Card className="mt-8 bg-white dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
               <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4">AI Doctor's Analysis</h2>
+                <h2 className="text-2xl font-bold mb-4">{t('aiDoctor.analysis.title')}</h2>
                 <div dangerouslySetInnerHTML={{ __html: result }} />
               </CardContent>
             </Card>
@@ -244,7 +242,7 @@ export default function AIDoctorPage() {
                 <div className="h-10 w-10">
                   <Image
                     src="/Artboard-2.svg"
-                    alt="Symvii Logo"
+                    alt={t('branding.logoAltLight')}
                     width={40}
                     height={40}
                     priority
@@ -252,76 +250,76 @@ export default function AIDoctorPage() {
                   />
                 </div>
                 <span className="text-2xl font-bold text-white">
-                  Symvii
+                  {t('branding.name')}
                 </span>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Empowering healthcare through AI-driven insights and personalized tracking, making health management seamless and intelligent.
+                {t('footer.brand.description')}
               </p>
             </div>
 
             {/* Navigation Links */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-8">
               <div>
-                <h3 className="text-white font-semibold mb-4">Product</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.product.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#features" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Features
+                      {t('footer.navigation.product.items.features')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#benefits" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Benefits
+                      {t('footer.navigation.product.items.benefits')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#testimonials" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Testimonials
+                      {t('footer.navigation.product.items.testimonials')}
                     </Link>
                   </li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-white font-semibold mb-4">Tools</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.tools.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="/bmi-calculator" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      BMI Calculator
+                      {t('footer.navigation.tools.items.bmiCalculator')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/ai-doctor" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      AI Doctor
+                      {t('footer.navigation.tools.items.aiDoctor')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/symptoms-tracker" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Symptoms Tracker
+                      {t('footer.navigation.tools.items.symptomsTracker')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Support</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.support.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#faqs" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      FAQs
+                      {t('footer.navigation.support.items.faqs')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Contact
+                      {t('footer.navigation.support.items.contact')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Connect</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.connect.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link 
@@ -329,7 +327,7 @@ export default function AIDoctorPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      Twitter
+                      {t('footer.navigation.connect.items.twitter')}
                     </Link>
                   </li>
                   <li>
@@ -338,7 +336,7 @@ export default function AIDoctorPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      LinkedIn
+                      {t('footer.navigation.connect.items.linkedin')}
                     </Link>
                   </li>
                   <li>
@@ -347,7 +345,7 @@ export default function AIDoctorPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      GitHub
+                      {t('footer.navigation.connect.items.github')}
                     </Link>
                   </li>
                 </ul>

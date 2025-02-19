@@ -28,6 +28,7 @@ import {
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { toggleDarkMode, initializeTheme } from '@/redux/features/themeSlice';
 import { useRouter } from "next/navigation";
+import { useTranslation } from 'react-i18next';
 
 interface DayData {
   day: string;
@@ -201,8 +202,9 @@ export default function SymptomsTrackerPage() {
     unit: ''
   });
   const [symptomSuggestions, setSymptomSuggestions] = useState<string[]>([]);
+  const { t } = useTranslation();
 
-  // Define available units
+  // Define available units using translations
   const DOSAGE_UNITS = [
     "mg", // milligrams
     "g",  // grams
@@ -235,14 +237,14 @@ export default function SymptomsTrackerPage() {
           const data = await response.json();
           setGraphs(Array.isArray(data) ? data : []);
         } catch (error) {
-          console.error('Error loading graphs:', error);
+          console.error(t('symptomsTracker.messages.loadError'), error);
           setGraphs([]);
         }
       }
     };
 
     loadGraphs();
-  }, [isAuthenticated]);
+  }, [isAuthenticated, t]);
 
   // Separate effect for saving
   useEffect(() => {
@@ -251,14 +253,12 @@ export default function SymptomsTrackerPage() {
         try {
           await fetch('http://localhost:8000/api/medicine-graphs', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify(graphs),
           });
         } catch (error) {
-          console.error('Error saving graphs:', error);
+          console.error(t('symptomsTracker.messages.saveError'), error);
         }
       }
     };
@@ -266,7 +266,7 @@ export default function SymptomsTrackerPage() {
     // Add a debounce to prevent too frequent saves
     const timeoutId = setTimeout(saveGraphs, 1000);
     return () => clearTimeout(timeoutId);
-  }, [graphs, isAuthenticated]);
+  }, [graphs, isAuthenticated, t]);
 
   if (loading || !isAuthenticated) {
     return null;
@@ -324,7 +324,6 @@ export default function SymptomsTrackerPage() {
   };
 
   const handleDosageSubmit = () => {
-    // Reset previous errors
     setFormErrors({
       medicineName: '',
       dosage: '',
@@ -337,7 +336,7 @@ export default function SymptomsTrackerPage() {
     if (!newMedicineName.trim()) {
       setFormErrors(prev => ({
         ...prev,
-        medicineName: 'Medicine name is required'
+        medicineName: t('symptomsTracker.form.medicineName.error')
       }));
       hasError = true;
     }
@@ -345,21 +344,20 @@ export default function SymptomsTrackerPage() {
     if (!newDosage) {
       setFormErrors(prev => ({
         ...prev,
-        dosage: 'Dosage is required'
+        dosage: t('symptomsTracker.form.dosage.error')
       }));
       hasError = true;
     }
 
     const selectedDateObj = new Date(selectedDate);
     const today = new Date();
-    
     selectedDateObj.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
 
     if (selectedDateObj.getTime() > today.getTime()) {
       setFormErrors(prev => ({
         ...prev,
-        date: 'Cannot add data for future dates'
+        date: t('symptomsTracker.form.dosage.futureDate')
       }));
       hasError = true;
     }
@@ -367,14 +365,12 @@ export default function SymptomsTrackerPage() {
     if (!newUnit) {
       setFormErrors(prev => ({
         ...prev,
-        unit: 'Unit is required'
+        unit: t('symptomsTracker.form.unit.error')
       }));
       hasError = true;
     }
 
-    if (hasError) {
-      return;
-    }
+    if (hasError) return;
 
     const dosageValue = Math.min(Number(newDosage), 20);
     const dayOfWeek = DAYS[selectedDateObj.getDay()];
@@ -554,10 +550,10 @@ export default function SymptomsTrackerPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-xl font-semibold text-primary dark:text-background-secondary-light">Symvii</span>
+                  <span className="text-xl font-semibold text-primary dark:text-background-secondary-light">{t('branding.name')}</span>
                 </Link>
                 <Link href="/" className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary">
-                  Home
+                  {t('symptomsTracker.navigation.home')}
                 </Link>
               </div>
               <Button onClick={handleDarkModeToggle} variant="ghost" size="icon">
@@ -569,7 +565,7 @@ export default function SymptomsTrackerPage() {
 
         <div className="container mx-auto px-4 pt-24 pb-16">
           <h1 className="text-4xl font-bold mb-8 text-center">
-            Symptoms Tracker
+            {t('symptomsTracker.title')}
           </h1>
 
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
@@ -592,7 +588,7 @@ export default function SymptomsTrackerPage() {
                     {formatDateForDisplay(getWeekEnd(currentWeekStart))}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-1 font-medium">
-                    Week Overview
+                    {t('symptomsTracker.weekNavigation.weekOverview')}
                   </p>
                 </div>
                 
@@ -633,13 +629,13 @@ export default function SymptomsTrackerPage() {
                   <Button 
                     className="flex-1 sm:flex-none bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30"
                   >
-                    <Plus className="mr-2 h-4 w-4" /> My Record
+                    <Plus className="mr-2 h-4 w-4" /> {t('symptomsTracker.buttons.addRecord')}
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="bg-[#FAF7F0] dark:bg-[#4A4947] border border-[#D8D2C2] dark:border-[#B17457]">
                   <DialogHeader>
                     <DialogTitle className="text-[#4A4947] dark:text-[#FAF7F0]">
-                      Add New Symptom Record
+                      {t('symptomsTracker.dialog.addRecord.title')}
                     </DialogTitle>
                   </DialogHeader>
                   <div className="space-y-4 pt-4">
@@ -648,13 +644,13 @@ export default function SymptomsTrackerPage() {
                         htmlFor="graphName"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Symptom Name
+                        {t('symptomsTracker.dialog.addRecord.symptomName.label')}
                       </Label>
                       <Input
                         id="graphName"
                         value={newGraphName}
                         onChange={(e) => setNewGraphName(e.target.value)}
-                        placeholder="Enter symptom name"
+                        placeholder={t('symptomsTracker.dialog.addRecord.symptomName.placeholder')}
                         className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
                       />
                     </div>
@@ -662,7 +658,7 @@ export default function SymptomsTrackerPage() {
                       onClick={handleAddGraph}
                       className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300"
                     >
-                      Create Graph
+                      {t('symptomsTracker.buttons.createGraph')}
                     </Button>
                   </div>
                 </DialogContent>
@@ -677,7 +673,7 @@ export default function SymptomsTrackerPage() {
             <DialogContent className="bg-[#FAF7F0] dark:bg-[#4A4947] border border-[#D8D2C2] dark:border-[#B17457]">
               <DialogHeader>
                 <DialogTitle className="text-[#4A4947] dark:text-[#FAF7F0]">
-                  Update Dosage
+                  {t('symptomsTracker.dialog.updateDosage.title')}
                 </DialogTitle>
               </DialogHeader>
               <div className="space-y-4 pt-4">
@@ -686,7 +682,7 @@ export default function SymptomsTrackerPage() {
                     htmlFor="date"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Select Date
+                    {t('symptomsTracker.form.date.label')}
                   </Label>
                   <Input
                     id="date"
@@ -710,7 +706,7 @@ export default function SymptomsTrackerPage() {
                     htmlFor="medicineName"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Medicine Name <span className="text-red-500">*</span>
+                    {t('symptomsTracker.form.medicineName.label')} <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="medicineName"
@@ -719,7 +715,7 @@ export default function SymptomsTrackerPage() {
                       setNewMedicineName(e.target.value);
                       setFormErrors(prev => ({ ...prev, medicineName: '' }));
                     }}
-                    placeholder="Enter medicine name"
+                    placeholder={t('symptomsTracker.form.medicineName.placeholder')}
                     className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
                       formErrors.medicineName ? 'border-red-500' : ''
                     }`}
@@ -734,7 +730,7 @@ export default function SymptomsTrackerPage() {
                     htmlFor="dosage"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Enter dosage <span className="text-red-500">*</span>
+                    {t('symptomsTracker.form.dosage.placeholder')} <span className="text-red-500">*</span>
                   </Label>
                   <Input
                     id="dosage"
@@ -744,7 +740,7 @@ export default function SymptomsTrackerPage() {
                       setNewDosage(e.target.value);
                       setFormErrors(prev => ({ ...prev, dosage: '' }));
                     }}
-                    placeholder="Enter dosage"
+                    placeholder={t('symptomsTracker.form.dosage.placeholder')}
                     min="0"
                     max="20"
                     className={`mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0] ${
@@ -761,7 +757,7 @@ export default function SymptomsTrackerPage() {
                     htmlFor="unit"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Unit <span className="text-red-500">*</span>
+                    {t('symptomsTracker.form.unit.label')} <span className="text-red-500">*</span>
                   </Label>
                   <select
                     id="unit"
@@ -790,14 +786,14 @@ export default function SymptomsTrackerPage() {
                     htmlFor="symptom"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Enter symptoms (optional)
+                    {t('symptomsTracker.form.symptom.placeholder')}
                   </Label>
                   <div className="relative">
                     <Input
                       id="symptom"
                       value={newSymptom}
                       onChange={handleSymptomChange}
-                      placeholder="Enter symptoms"
+                      placeholder={t('aiDoctor.consultation.form.symptom.label')}
                       className="mt-1 bg-white dark:bg-[#3A3937] text-[#4A4947] dark:text-[#FAF7F0]"
                     />
                     {symptomSuggestions.length > 0 && (
@@ -820,7 +816,7 @@ export default function SymptomsTrackerPage() {
                   className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   disabled={!isFormValid()}
                 >
-                  Update Dosage
+                  {t('symptomsTracker.dialog.updateDosage.title')}
                 </Button>
               </div>
             </DialogContent>
@@ -878,14 +874,14 @@ export default function SymptomsTrackerPage() {
                         onClick={() => handleUpdateDosage(graph.id)}
                         className="bg-[#B17457] hover:bg-[#B17457]/90 text-white shadow-md hover:shadow-lg transition-all duration-300"
                       >
-                        <Plus className="mr-2 h-4 w-4" /> Add Dosage
+                        <Plus className="mr-2 h-4 w-4" /> {t('symptomsTracker.buttons.addDosage')}
                       </Button>
                       <Button
                         onClick={() => exportToCSV(graph.data, graph.name)}
                         variant="outline"
                         className="border-[#B17457]/20 hover:bg-[#B17457]/10 transition-all duration-300"
                       >
-                        <Download className="mr-2 h-4 w-4" /> Export
+                        <Download className="mr-2 h-4 w-4" /> {t('symptomsTracker.buttons.export')}
                       </Button>
                       <Button
                         onClick={() => handleDeleteGraph(graph.id)}
@@ -1024,7 +1020,9 @@ export default function SymptomsTrackerPage() {
             ))}
           </div>
         </div>
-        <footer className="bg-[#4A4947] dark:bg-[#2A2927] py-16">
+    
+      {/* Footer */}
+      <footer className="bg-[#4A4947] dark:bg-[#2A2927] py-16">
         <div className="container mx-auto px-4">
           {/* Top Section */}
           <div className="flex flex-col md:flex-row justify-between items-start mb-12 space-y-8 md:space-y-0">
@@ -1042,76 +1040,76 @@ export default function SymptomsTrackerPage() {
                   />
                 </div>
                 <span className="text-2xl font-bold text-white">
-                  Symvii
+                  {t('branding.name')}
                 </span>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Empowering healthcare through AI-driven insights and personalized tracking, making health management seamless and intelligent.
+                {t('footer.brand.description')}
               </p>
             </div>
 
             {/* Navigation Links */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-8">
               <div>
-                <h3 className="text-white font-semibold mb-4">Product</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.product.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#features" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Features
+                      {t('footer.navigation.product.items.features')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#benefits" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Benefits
+                      {t('footer.navigation.product.items.benefits')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#testimonials" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Testimonials
+                      {t('footer.navigation.product.items.testimonials')}
                     </Link>
                   </li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-white font-semibold mb-4">Tools</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.tools.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="/bmi-calculator" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      BMI Calculator
+                      {t('footer.navigation.tools.items.bmiCalculator')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/ai-doctor" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      AI Doctor
+                      {t('footer.navigation.tools.items.aiDoctor')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/symptoms-tracker" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Symptoms Tracker
+                      {t('footer.navigation.tools.items.symptomsTracker')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Support</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.support.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#faqs" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      FAQs
+                      {t('footer.navigation.support.items.faqs')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Contact
+                      {t('footer.navigation.support.items.contact')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Connect</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.connect.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link 
@@ -1119,7 +1117,7 @@ export default function SymptomsTrackerPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      Twitter
+                      {t('footer.navigation.connect.items.twitter')}
                     </Link>
                   </li>
                   <li>
@@ -1128,7 +1126,7 @@ export default function SymptomsTrackerPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      LinkedIn
+                      {t('footer.navigation.connect.items.linkedin')}
                     </Link>
                   </li>
                   <li>
@@ -1137,7 +1135,7 @@ export default function SymptomsTrackerPage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      GitHub
+                      {t('footer.navigation.connect.items.github')}
                     </Link>
                   </li>
                 </ul>
@@ -1155,7 +1153,7 @@ export default function SymptomsTrackerPage() {
           </div>
         </div>
       </footer>
- 
+
       </div>
     </div>
   );

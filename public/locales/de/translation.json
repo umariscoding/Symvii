@@ -1,0 +1,572 @@
+{
+    "testimonials": {
+      "title": "Was unsere Benutzer sagen",
+      "item1": {
+        "text": "Die KI -Gesundheit von Symvii hat meine tägliche Routine revolutioniert. ",
+        "author": "Oliver Smith",
+        "location": "San Francisco, CA"
+      },
+      "item2": {
+        "text": "Symvii ist ein Game-Changer für die Verwaltung meiner Gesundheit. ",
+        "author": "Emma Thompson",
+        "location": "New York City, NY"
+      },
+      "item3": {
+        "text": "Symvii hat meinen Ansatz in das Gesundheitsmanagement verändert. ",
+        "author": "James Wilson",
+        "location": "Greenwich, London"
+      }
+    },
+    "navigation": {
+      "features": "Merkmale",
+      "benefits": "Vorteile",
+      "testimonials": "Zeugnisse",
+      "faqs": "FAQs",
+      "tools": "Werkzeuge",
+      "login": "Login",
+      "profile": "Profil"
+    },
+    "tools": {
+      "bmiCalculator": "BMI -Taschenrechner",
+      "aiDoctor": "KI -Arzt",
+      "symptomsTracker": "Symptome Tracker",
+      "medicalHistory": "Krankengeschichte"
+    },
+    "branding": {
+      "name": "Symvii",
+      "logoAltDark": "Symvii Logo dunkel",
+      "logoAltLight": "Symvii Logo Licht"
+    },
+    "hero": {
+      "title": "Ihr persönlicher Assistent von KI-betrieben",
+      "learnMore": "Erfahren Sie mehr",
+      "tabs": {
+        "symptoms": {
+          "label": "Symptome",
+          "title": "Verfolgen Sie Ihre Symptome",
+          "description": "Loggen und überwachen Ihre Symptome im Laufe der Zeit. "
+        },
+        "diagnosis": {
+          "label": "Diagnose",
+          "title": "AI-unterstützte Diagnose",
+          "description": "Unsere fortgeschrittene KI hilft bei der Identifizierung potenzieller gesundheitlicher Probleme auf der Grundlage Ihrer Symptome und Ihrer Krankengeschichte."
+        },
+        "treatment": {
+          "label": "Behandlung",
+          "title": "Personalisierte Behandlungspläne",
+          "description": "Erhalten Sie maßgeschneiderte Behandlungsempfehlungen und verfolgen Sie Ihren Fortschritt in Richtung einer besseren Gesundheit."
+        }
+      }
+    },
+    "healthMonitoring": {
+      "title": "Präzises Gesundheitsüberwachungssystem",
+      "description": "Stärken Sie Ihre Gesundheitsreise mit den innovativen KI-gesteuerten Lösungen von Symvii und liefern genaue Einblicke für ein besseres Management im Großraum London.",
+      "trackNow": "Track jetzt",
+      "imageAlt": "Hintergrund für Gesundheitsüberwachung"
+    },
+    "features": {
+      "title": "Gebaut, um Ihre Gesundheit besser zu verstehen.",
+      "description": "Symvii schafft eine innovative Software für das Gesundheitswesen, um Einzelpersonen die Kontrolle über ihr Wohlbefinden zu übernehmen. ",
+      "learnMore": "Erfahren Sie mehr"
+    },
+    "featuresGrid": {
+      "title": "Verfolgen Sie die Gesundheit leicht",
+      "items": {
+        "monitoring": {
+          "title": "Personalisierte Gesundheitsüberwachung",
+          "description": "Verfolgen Sie Ihre Gesundheitszustände mit KI-gesteuerten Erkenntnissen, die auf Ihre besonderen Bedürfnisse zugeschnitten sind."
+        },
+        "alerts": {
+          "title": "Echtzeit-Zustandswarnungen",
+          "description": "Erhalten Sie sofortige Benachrichtigungen über signifikante Änderungen in Ihrem Gesundheitszustand."
+        },
+        "analysis": {
+          "title": "Umfassende Datenanalyse",
+          "description": "Erhalten Sie ein tieferes Verständnis Ihrer Gesundheitstrends durch detaillierte Datenanalysen."
+        },
+        "integration": {
+          "title": "Nahlose Integrationslösungen",
+          "description": "Integrieren Sie unsere Tracking -Tools einfach in Ihre vorhandenen Gesundheitssysteme."
+        }
+      }
+    },
+    "benefits": {
+      "title": {
+        "highlight": "VORTEILE",
+        "main": "Mehr als nur ein Gesundheitsjournal"
+      },
+      "items": {
+        "analysis": {
+          "title": "AI-betriebene Gesundheitsanalyse",
+          "description": "Unsere fortschrittliche KI -Technologie bietet umfassende Gesundheitsbewertungen und hilft Ihnen, die Signale und potenziellen gesundheitlichen Bedenken Ihres Körpers zu verstehen.",
+          "imageAlt": "KI -Gesundheitsanalyse"
+        },
+        "monitoring": {
+          "title": "Kontinuierliche Gesundheitsüberwachung",
+          "description": "Verfolgen Sie die Vitalfunktionen, Symptome und Medikamente im Laufe der Zeit mit unseren intuitiven Überwachungsfunktionen, sodass Sie Muster und Verbesserungen Ihrer Gesundheit erkennen können.",
+          "imageAlt": "Gesundheitsüberwachung"
+        },
+        "insights": {
+          "title": "Professionelle medizinische Erkenntnisse",
+          "description": "Erhalten Sie personalisierte Gesundheitsempfehlungen und Erkenntnisse auf der Grundlage Ihrer Krankengeschichte und aktuellen Symptome, die von Angehörigen der Gesundheitsberufe validiert wurden.",
+          "imageAlt": "Medizinische Erkenntnisse"
+        }
+      }
+    },
+    "locationSpecific": {
+      "title": "Verwalten Sie chronische Krankheiten mit Symvii im Großraum London",
+      "description": "Symvii bietet KI-angetriebene Symptomberichterstattung und Gesundheitsverfolgung für diejenigen, die eine Diagnose suchen. "
+    },
+    "faqs": {
+      "title": {
+        "question": "Fragen?",
+        "answer": "Antworten."
+      },
+      "items": {
+        "1": {
+          "title": "Was ist Symvii und wie funktioniert es?",
+          "content": "Symvii ist eine umfassende Plattform für die Gesundheit überwacht, auf der Sie mit KI Symptome dokumentieren, Vitalfunktionen verfolgen und Ihre allgemeine Gesundheit verwalten können. "
+        },
+        "2": {
+          "title": "Welche Erkrankungen können symvii helfen, zu überwachen?",
+          "content": "SYMVII soll bei einer Vielzahl von Erkrankungen helfen, einschließlich chronischer Krankheiten, kardiovaskulärer Gesundheit, Atemwegserkrankungen und allgemeiner Wellnessüberwachung. "
+        },
+        "3": {
+          "title": "Wie genau ist die KI bei der Analyse der Gesundheitszustände?",
+          "content": "Unser KI -System wurde auf Millionen von Krankenakten geschult und von Angehörigen der Gesundheitsberufe validiert. "
+        },
+        "4": {
+          "title": "Sind meine medizinischen Daten mit Symvii gesichert?",
+          "content": "Absolut. "
+        },
+        "5": {
+          "title": "Was soll ich tun, wenn Symvii ein potenzielles gesundheitliches Problem identifiziert?",
+          "content": "Wenn Symvii ein potenzielles gesundheitliches Problem feststellt, werden detaillierte Informationen über die Erkrankung angegeben und geeignete nächste Schritte empfohlen, einschließlich der Frage, ob Sie einen Gesundheitsdienstleister konsultieren sollten. "
+        }
+      }
+    },
+    "footer": {
+      "brand": {
+        "name": "Symvii",
+        "logoAlt": "Symvii Logo",
+        "description": "Stärkung der Gesundheitsversorgung durch KI-gesteuerte Erkenntnisse und personalisierte Verfolgung, wodurch das Gesundheitsmanagement nahtlos und intelligent wird."
+      },
+      "navigation": {
+        "product": {
+          "title": "Produkt",
+          "items": {
+            "features": "Merkmale",
+            "benefits": "Vorteile",
+            "testimonials": "Zeugnisse"
+          }
+        },
+        "tools": {
+          "title": "Werkzeuge",
+          "items": {
+            "bmiCalculator": "BMI -Taschenrechner",
+            "aiDoctor": "KI -Arzt",
+            "symptomsTracker": "Symptome Tracker"
+          }
+        },
+        "support": {
+          "title": "Unterstützung",
+          "items": {
+            "faqs": "FAQs",
+            "contact": "Kontakt"
+          }
+        },
+        "connect": {
+          "title": "Verbinden",
+          "items": {
+            "twitter": "Twitter",
+            "linkedin": "LinkedIn",
+            "github": "Github"
+          }
+        }
+      },
+      "copyright": {
+        "text": "© {Jahr} Symvii. "
+      }
+    },
+    "contact": {
+      "title": "Kontaktieren Sie uns",
+      "form": {
+        "name": {
+          "label": "Name"
+        },
+        "email": {
+          "label": "E-Mail"
+        },
+        "message": {
+          "label": "Nachricht"
+        },
+        "submit": "Nachricht senden"
+      },
+      "info": {
+        "title": "Sich in Verbindung setzen",
+        "description": "Fragen oder Feedback haben? ",
+        "contact": {
+          "phone": "+1 (555) 123-4567",
+          "email": "contact@symvii.com",
+          "address": "123 Health Street, Med City, MC 12345"
+        }
+      }
+    },
+    "aiDoctor": {
+      "navigation": {
+        "home": "Heim",
+        "logo": {
+          "dark": "Symvii Logo dunkel",
+          "light": "Symvii Logo Licht"
+        }
+      },
+      "consultation": {
+        "title": "AI Doctor Consultation",
+        "form": {
+          "symptom": {
+            "label": "Symptom eingeben",
+            "placeholder": "Beschreibe deine Symptome hier ..."
+          },
+          "age": {
+            "label": "Alter",
+            "placeholder": "Betreten Sie Ihr Alter"
+          },
+          "country": {
+            "label": "Wohnsitzland oder kürzlich besucht",
+            "placeholder": "Betreten Sie Land"
+          },
+          "sex": {
+            "label": "Sex bei der Geburt",
+            "placeholder": "Wählen",
+            "options": {
+              "male": "Männlich",
+              "female": "Weiblich",
+              "other": "Andere"
+            }
+          },
+          "submit": {
+            "analyzing": "Analyse ...",
+            "default": "Einreichen"
+          }
+        }
+      },
+      "disclaimer": {
+        "title": "Haftungsausschluss von AI Doctor",
+        "description": "Dieser KI -Arzt dient nur zu Informationszwecken und ersetzt keine professionellen medizinischen Beratung, Diagnose oder Behandlung. ",
+        "point1": "Bietet allgemeine Gesundheitsinformationen",
+        "point2": "Kein Ersatz für professionelle medizinische Beratung",
+        "point3": "Keine bestimmten Bedingungen diagnostizieren",
+        "point4": "Sofortige medizinische Hilfe für Notfälle suchen",
+        "reminder": "Denken Sie daran, Ihre Gesundheit ist wichtig. ",
+        "learnMore": "Erfahren Sie mehr über KI im Gesundheitswesen"
+      },
+      "analysis": {
+        "title": "Analyse des Arztes von KI"
+      },
+      "error": {
+        "message": "Bei der Bearbeitung Ihrer Anfrage trat ein Fehler auf. "
+      }
+    },
+    "bmiCalculator": {
+      "title": "BMI -Taschenrechner",
+      "form": {
+        "height": {
+          "label": "Höhe",
+          "placeholder": {
+            "ft": "ft",
+            "in": "In"
+          }
+        },
+        "weight": {
+          "label": "Gewicht"
+        },
+        "units": {
+          "cm": "cm",
+          "in": "In",
+          "ft": "ft",
+          "kg": "kg",
+          "lbs": "lbs"
+        },
+        "calculate": "Berechnen Sie BMI"
+      },
+      "results": {
+        "bmi": "Dein BMI",
+        "category": "Kategorie",
+        "categories": {
+          "underweight": "Untergewicht",
+          "normal": "Normales Gewicht",
+          "overweight": "Übergewicht",
+          "obese": "Fettleibig"
+        },
+        "ranges": {
+          "underweight": "<18,5",
+          "normal": "18.5-24.9",
+          "overweight": "25-29.9",
+          "obese": "≥ 30"
+        }
+      },
+      "info": {
+        "title": "BMI verstehen",
+        "description": "Body Mass Index (BMI) ist ein einfaches Maß für Körperfett basierend auf Größe und Gewicht. ",
+        "categories": {
+          "underweight": "Untergewicht: BMI weniger als 18,5",
+          "normal": "Normales Gewicht: BMI 18,5 bis 24,9",
+          "overweight": "Übergewicht: BMI 25 bis 29,9",
+          "obese": "Fettleibig: BMI 30 oder mehr"
+        },
+        "disclaimer": "Während BMI ein nützliches Werkzeug ist, ist es kein perfektes Maß. ",
+        "learnMore": "Erfahren Sie mehr über BMI"
+      }
+    },
+    "login": {
+      "title": {
+        "login": "Login",
+        "signup": "Ein Konto erstellen"
+      },
+      "form": {
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "Geben Sie Ihre E -Mail ein"
+        },
+        "password": {
+          "label": "Passwort",
+          "placeholder": "Geben Sie Ihr Passwort ein"
+        },
+        "name": {
+          "label": "Vollständiger Name",
+          "placeholder": "Geben Sie Ihren vollständigen Namen ein"
+        },
+        "phone": {
+          "label": "Telefonnummer",
+          "placeholder": "Geben Sie Ihre Telefonnummer ein"
+        },
+        "country": {
+          "label": "Land",
+          "placeholder": "Betreten Sie Ihr Land"
+        },
+        "submit": {
+          "login": "anmelden",
+          "signup": "Benutzerkonto erstellen",
+          "loading": "Bitte warten..."
+        }
+      },
+      "toggleAccount": {
+        "signup": "Benötigen Sie ein Konto? ",
+        "login": "Haben Sie bereits ein Konto? "
+      },
+      "error": {
+        "invalidCredentials": "Die von Ihnen eingegebene E -Mail oder Passwort ist falsch",
+        "generic": "Es ist ein Fehler aufgetreten. "
+      },
+      "navigation": {
+        "home": "Heim",
+        "logo": {
+          "dark": "Symvii Logo dunkel",
+          "light": "Symvii Logo Licht"
+        }
+      }
+    },
+    "profile": {
+      "navigation": {
+        "backToHome": "Zurück zu Hause"
+      },
+      "title": "Profileinstellungen",
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "Geben Sie Ihren Namen ein"
+        },
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "Geben Sie Ihre E -Mail ein"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "Geben Sie Ihre Telefonnummer ein",
+          "error": "Die Telefonnummer muss nur Ziffern enthalten"
+        },
+        "country": {
+          "label": "Land",
+          "placeholder": "Betreten Sie Ihr Land"
+        },
+        "password": {
+          "label": "Passwort",
+          "placeholder": "Geben Sie ein neues Passwort ein",
+          "error": "Das Passwort muss mindestens 8 Zeichen mit 1 Großbuchstaben, 1 Nummer und 1 Symbol betragen"
+        }
+      },
+      "buttons": {
+        "logout": "Abmelden",
+        "saveChanges": "Änderungen speichern"
+      },
+      "messages": {
+        "updateSuccess": "Profil erfolgreich aktualisiert"
+      }
+    },
+    "medicalHistory": {
+      "title": "Krankengeschichte",
+      "search": {
+        "placeholder": "Suchbedingungen ..."
+      },
+      "addCondition": {
+        "button": "Krankheit hinzufügen",
+        "title": "Krankheit hinzufügen",
+        "form": {
+          "title": {
+            "label": "Zustandstitel",
+            "placeholder": "Geben Sie den Bedingennamen ein",
+            "error": "Der Titel ist erforderlich"
+          },
+          "description": {
+            "label": "Beschreibung",
+            "placeholder": "Geben Sie Bedingungsdetails ein",
+            "error": "Beschreibung ist erforderlich"
+          },
+          "medications": {
+            "label": "Medikamente",
+            "placeholder": "Geben Sie den Namen des Medikamenten ein",
+            "addButton": "Hinzufügen",
+            "removeAriaLabel": "Medikamente entfernen"
+          },
+          "diagnosisDate": {
+            "label": "Diagnosedatum",
+            "placeholder": "Datum auswählen"
+          },
+          "submit": "Bedingung hinzufügen"
+        }
+      },
+      "conditionCard": {
+        "diagnosedLabel": "Diagnostiziert",
+        "descriptionLabel": "Beschreibung",
+        "medicationsLabel": "Medikamente",
+        "deleteButton": {
+          "label": "Löschen",
+          "ariaLabel": "Zustand löschen"
+        }
+      },
+      "messages": {
+        "deleteError": "Fehler löschen Bedingung:",
+        "fetchError": "Fehler beim Abholen von Fehlern:",
+        "addError": "Fehler beim Hinzufügen von Bedingung:",
+        "validation": {
+          "title": "Der Titel ist erforderlich",
+          "description": "Beschreibung ist erforderlich"
+        }
+      },
+      "noConditions": "Keine Erkrankungen gefunden.",
+      "noMedications": "Keine Medikamente aufgeführt",
+      "form": {
+        "date": {
+          "format": {
+            "long": {
+              "year": "numerisch",
+              "month": "lang",
+              "day": "numerisch"
+            }
+          }
+        }
+      },
+      "actions": {
+        "redirect": {
+          "login": "Umleiten zum Anmeldung ..."
+        }
+      }
+    },
+    "symptomsTracker": {
+      "title": "Symptome Tracker",
+      "navigation": {
+        "home": "Heim"
+      },
+      "weekNavigation": {
+        "weekOverview": "Woche Übersicht",
+        "futureWeekDisabled": "Kann nicht zu zukünftigen Wochen ohne Daten navigieren"
+      },
+      "form": {
+        "date": {
+          "label": "Datum auswählen"
+        },
+        "medicineName": {
+          "title": "Medizin",
+          "label": "Medizinischer Name",
+          "placeholder": "Geben Sie den Namen der Medizin ein",
+          "error": "Der medizinische Name ist erforderlich"
+        },
+        "dosage": {
+          "label": "Dosierung",
+          "placeholder": "Dosierung eingeben",
+          "error": "Dosierung ist erforderlich",
+          "futureDate": "Daten für zukünftige Daten nicht hinzufügen können"
+        },
+        "unit": {
+          "label": "Einheit",
+          "error": "Einheit ist erforderlich",
+          "options": {
+            "mg": "mg",
+            "g": "G",
+            "ml": "ml",
+            "mcg": "McG",
+            "IU": "IU",
+            "tablets": "Tabletten",
+            "capsules": "Kapseln"
+          }
+        },
+        "symptom": {
+          "label": "Symptome",
+          "placeholder": "Symptome eingeben (optional)"
+        }
+      },
+      "buttons": {
+        "addRecord": "Meine Aufzeichnung",
+        "addDosage": "Dosierung hinzufügen",
+        "export": "Export",
+        "delete": "Löschen",
+        "save": "Speichern",
+        "cancel": "Stornieren",
+        "createGraph": "Graph erstellen"
+      },
+      "dialog": {
+        "addRecord": {
+          "title": "Neue Symptomaufzeichnung hinzufügen",
+          "graphName": {
+            "label": "Grafikname",
+            "placeholder": "Geben Sie den Grafiknamen ein"
+          },
+          "symptomName": {
+            "label": "Symptomname",
+            "placeholder": "Geben Sie den Symptomnamen ein"
+          }
+        },
+        "updateDosage": {
+          "title": "Dosierung aktualisieren"
+        }
+      },
+      "messages": {
+        "loadError": "Fehler laden Diagramme:",
+        "saveError": "Fehler speichern Diagramme:"
+      },
+      "dateFormat": {
+        "display": {
+          "month": "kurz",
+          "day": "numerisch",
+          "year": "numerisch"
+        }
+      },
+      "footer": {
+        "description": "Stärkung der Gesundheitsversorgung durch KI-gesteuerte Erkenntnisse und personalisierte Verfolgung, wodurch das Gesundheitsmanagement nahtlos und intelligent wird.",
+        "sections": {
+          "support": {
+            "title": "Unterstützung",
+            "faqs": "FAQs",
+            "contact": "Kontakt"
+          },
+          "connect": {
+            "title": "Verbinden",
+            "twitter": "Twitter",
+            "linkedin": "LinkedIn",
+            "github": "Github"
+          }
+        },
+        "copyright": "© {Jahr} Symvii. "
+      }
+    }
+  }

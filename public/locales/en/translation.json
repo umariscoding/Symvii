@@ -1,0 +1,572 @@
+{
+  "testimonials": {
+    "title": "What Our Users Say",
+    "item1": {
+      "text": "Symvii's AI health tracking has revolutionized my daily routine. The platform is user-friendly and offers essential insights that empower me to manage my health with ease. Living in San Francisco, it's a must-have tool for proactive health maintenance.",
+      "author": "Oliver Smith",
+      "location": "San Francisco, CA"
+    },
+    "item2": {
+      "text": "Symvii is a game-changer for managing my health. Its AI capabilities provide invaluable insights and make tracking my condition straightforward and stress-free. In New York, it's the ideal solution for anyone seeking effective, tech-driven health management.",
+      "author": "Emma Thompson",
+      "location": "New York City, NY"
+    },
+    "item3": {
+      "text": "Symvii has transformed my approach to health management. Their AI tracking is intuitive and provides real-time insights that help me stay on top of my condition effortlessly. Being in Greenwich, it's the perfect solution for anyone wanting innovative health support.",
+      "author": "James Wilson",
+      "location": "Greenwich, London"
+    }
+  },
+  "navigation": {
+    "features": "Features",
+    "benefits": "Benefits",
+    "testimonials": "Testimonials",
+    "faqs": "FAQs",
+    "tools": "Tools",
+    "login": "Login",
+    "profile": "Profile"
+  },
+  "tools": {
+    "bmiCalculator": "BMI Calculator",
+    "aiDoctor": "AI Doctor",
+    "symptomsTracker": "Symptoms Tracker",
+    "medicalHistory": "Medical History"
+  },
+  "branding": {
+    "name": "Symvii",
+    "logoAltDark": "Symvii Logo Dark",
+    "logoAltLight": "Symvii Logo Light"
+  },
+  "hero": {
+    "title": "Your Personal AI-Powered Health Assistant",
+    "learnMore": "Learn more",
+    "tabs": {
+      "symptoms": {
+        "label": "Symptoms",
+        "title": "Track Your Symptoms",
+        "description": "Log and monitor your symptoms over time. Our AI analyzes patterns to provide insights into your health."
+      },
+      "diagnosis": {
+        "label": "Diagnosis",
+        "title": "AI-Assisted Diagnosis",
+        "description": "Our advanced AI helps identify potential health issues based on your symptoms and medical history."
+      },
+      "treatment": {
+        "label": "Treatment",
+        "title": "Personalized Treatment Plans",
+        "description": "Receive tailored treatment recommendations and track your progress towards better health."
+      }
+    }
+  },
+  "healthMonitoring": {
+    "title": "Precise health monitoring system",
+    "description": "Empower your health journey with Symvii's innovative AI-driven solutions, delivering precise insights for better management in Greater London.",
+    "trackNow": "Track now",
+    "imageAlt": "Health Monitoring Background"
+  },
+  "features": {
+    "title": "Built to understand your health better.",
+    "description": "Symvii creates innovative healthcare management software to help individuals take control of their well-being. Our AI-powered platform functions as a personal health companion, simplifying symptom tracking, vital sign monitoring, and maintaining a detailed medical history.",
+    "learnMore": "Learn more"
+  },
+  "featuresGrid": {
+    "title": "Track Health Easily",
+    "items": {
+      "monitoring": {
+        "title": "Personalized Health Monitoring",
+        "description": "Track your health conditions with AI-driven insights tailored to your unique needs."
+      },
+      "alerts": {
+        "title": "Real-Time Condition Alerts",
+        "description": "Receive instant notifications on any significant changes in your health condition."
+      },
+      "analysis": {
+        "title": "Comprehensive Data Analysis",
+        "description": "Gain a deeper understanding of your health trends through detailed data analytics."
+      },
+      "integration": {
+        "title": "Seamless Integration Solutions",
+        "description": "Easily integrate our tracking tools with your existing healthcare systems."
+      }
+    }
+  },
+  "benefits": {
+    "title": {
+      "highlight": "BENEFITS",
+      "main": "More than just a health journal"
+    },
+    "items": {
+      "analysis": {
+        "title": "AI-Powered Health Analysis",
+        "description": "Our advanced AI technology provides comprehensive health assessments, helping you understand your body's signals and potential health concerns.",
+        "imageAlt": "AI Health Analysis"
+      },
+      "monitoring": {
+        "title": "Continuous Health Monitoring",
+        "description": "Track vital signs, symptoms, and medications over time with our intuitive monitoring features, allowing you to see patterns and improvements in your health.",
+        "imageAlt": "Health Monitoring"
+      },
+      "insights": {
+        "title": "Professional Medical Insights",
+        "description": "Receive personalized health recommendations and insights based on your medical history and current symptoms, validated by healthcare professionals.",
+        "imageAlt": "Medical Insights"
+      }
+    }
+  },
+  "locationSpecific": {
+    "title": "Manage Chronic Illness with Symvii in Greater London",
+    "description": "Symvii offers AI-powered symptom reporting and health tracking for those seeking a diagnosis. Based in Greater London, we help individuals with chronic illnesses monitor their conditions effectively. Trust Symvii to support your health journey."
+  },
+  "faqs": {
+    "title": {
+      "question": "Questions?",
+      "answer": "Answers."
+    },
+    "items": {
+      "1": {
+        "title": "What is Symvii and how does it work?",
+        "content": "Symvii is a comprehensive health monitoring platform that uses AI to help you document symptoms, track vital signs, and manage your overall health. Simply input your health data or concerns, and our AI will provide personalized insights and recommendations to help you make informed healthcare decisions."
+      },
+      "2": {
+        "title": "What medical conditions can Symvii help monitor?",
+        "content": "Symvii is designed to assist with a wide range of medical conditions, including chronic diseases, cardiovascular health, respiratory conditions, and general wellness monitoring. Our AI has been trained on diverse medical data to provide comprehensive health insights."
+      },
+      "3": {
+        "title": "How accurate is the AI in analyzing health conditions?",
+        "content": "Our AI system has been trained on millions of medical records and validated by healthcare professionals. While highly accurate, Symvii is designed as a support tool and should not replace professional medical diagnosis or treatment."
+      },
+      "4": {
+        "title": "Is my medical data secure with Symvii?",
+        "content": "Absolutely. We understand the sensitivity of medical information and take data security seriously. All your health data is encrypted and stored securely following HIPAA and GDPR guidelines. Your medical information is never shared without your explicit consent."
+      },
+      "5": {
+        "title": "What should I do if Symvii identifies a potential health concern?",
+        "content": "If Symvii detects a potential health concern, it will provide detailed information about the condition and recommend appropriate next steps, including whether you should consult a healthcare provider. We always encourage seeking professional medical advice for any concerning health issues."
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "Symvii",
+      "logoAlt": "Symvii Logo",
+      "description": "Empowering healthcare through AI-driven insights and personalized tracking, making health management seamless and intelligent."
+    },
+    "navigation": {
+      "product": {
+        "title": "Product",
+        "items": {
+          "features": "Features",
+          "benefits": "Benefits",
+          "testimonials": "Testimonials"
+        }
+      },
+      "tools": {
+        "title": "Tools",
+        "items": {
+          "bmiCalculator": "BMI Calculator",
+          "aiDoctor": "AI Doctor",
+          "symptomsTracker": "Symptoms Tracker"
+        }
+      },
+      "support": {
+        "title": "Support",
+        "items": {
+          "faqs": "FAQs",
+          "contact": "Contact"
+        }
+      },
+      "connect": {
+        "title": "Connect",
+        "items": {
+          "twitter": "Twitter",
+          "linkedin": "LinkedIn",
+          "github": "GitHub"
+        }
+      }
+    },
+    "copyright": {
+      "text": "© {year} Symvii. All rights reserved."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "form": {
+      "name": {
+        "label": "Name"
+      },
+      "email": {
+        "label": "Email"
+      },
+      "message": {
+        "label": "Message"
+      },
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Get in Touch",
+      "description": "Have questions or feedback? We'd love to hear from you. Fill out the form and we'll get back to you as soon as possible.",
+      "contact": {
+        "phone": "+1 (555) 123-4567",
+        "email": "contact@symvii.com",
+        "address": "123 Health Street, Med City, MC 12345"
+      }
+    }
+  },
+  "aiDoctor": {
+    "navigation": {
+      "home": "Home",
+      "logo": {
+        "dark": "Symvii Logo Dark",
+        "light": "Symvii Logo Light"
+      }
+    },
+    "consultation": {
+      "title": "AI Doctor Consultation",
+      "form": {
+        "symptom": {
+          "label": "Enter symptom",
+          "placeholder": "Describe your symptoms here..."
+        },
+        "age": {
+          "label": "Age",
+          "placeholder": "Enter your age"
+        },
+        "country": {
+          "label": "Country of residence or recently visited",
+          "placeholder": "Enter country"
+        },
+        "sex": {
+          "label": "Sex at birth",
+          "placeholder": "Select",
+          "options": {
+            "male": "Male",
+            "female": "Female",
+            "other": "Other"
+          }
+        },
+        "submit": {
+          "analyzing": "Analyzing...",
+          "default": "Submit"
+        }
+      }
+    },
+    "disclaimer": {
+      "title": "AI Doctor Disclaimer",
+      "description": "This AI doctor is for informational purposes only and does not replace professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.",
+      "point1": "Provides general health information",
+      "point2": "Not a substitute for professional medical advice",
+      "point3": "Cannot diagnose specific conditions",
+      "point4": "Seek immediate medical attention for emergencies",
+      "reminder": "Remember, your health is important. When in doubt, always consult with a healthcare professional.",
+      "learnMore": "Learn More About AI in Healthcare"
+    },
+    "analysis": {
+      "title": "AI Doctor's Analysis"
+    },
+    "error": {
+      "message": "An error occurred while processing your request. Please try again."
+    }
+  },
+  "bmiCalculator": {
+    "title": "BMI Calculator",
+    "form": {
+      "height": {
+        "label": "Height",
+        "placeholder": {
+          "ft": "ft",
+          "in": "in"
+        }
+      },
+      "weight": {
+        "label": "Weight"
+      },
+      "units": {
+        "cm": "cm",
+        "in": "in",
+        "ft": "ft",
+        "kg": "kg",
+        "lbs": "lbs"
+      },
+      "calculate": "Calculate BMI"
+    },
+    "results": {
+      "bmi": "Your BMI",
+      "category": "Category",
+      "categories": {
+        "underweight": "Underweight",
+        "normal": "Normal weight",
+        "overweight": "Overweight",
+        "obese": "Obese"
+      },
+      "ranges": {
+        "underweight": "< 18.5",
+        "normal": "18.5-24.9",
+        "overweight": "25-29.9",
+        "obese": "≥ 30"
+      }
+    },
+    "info": {
+      "title": "Understanding BMI",
+      "description": "Body Mass Index (BMI) is a simple measure of body fat based on height and weight. It applies to adult men and women.",
+      "categories": {
+        "underweight": "Underweight: BMI less than 18.5",
+        "normal": "Normal weight: BMI 18.5 to 24.9",
+        "overweight": "Overweight: BMI 25 to 29.9",
+        "obese": "Obese: BMI 30 or greater"
+      },
+      "disclaimer": "While BMI is a useful tool, it's not a perfect measure. Factors like muscle mass, age, and gender can affect its accuracy.",
+      "learnMore": "Learn More About BMI"
+    }
+  },
+  "login": {
+    "title": {
+      "login": "Login",
+      "signup": "Create an Account"
+    },
+    "form": {
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number"
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "Enter your country"
+      },
+      "submit": {
+        "login": "Sign in",
+        "signup": "Create Account",
+        "loading": "Please wait..."
+      }
+    },
+    "toggleAccount": {
+      "signup": "Need an account? Sign up",
+      "login": "Already have an account? Sign in"
+    },
+    "error": {
+      "invalidCredentials": "The email or password you entered is incorrect",
+      "generic": "An error occurred. Please try again."
+    },
+    "navigation": {
+      "home": "Home",
+      "logo": {
+        "dark": "Symvii Logo Dark",
+        "light": "Symvii Logo Light"
+      }
+    }
+  },
+  "profile": {
+    "navigation": {
+      "backToHome": "Back to Home"
+    },
+    "title": "Profile Settings",
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "Enter your phone number",
+        "error": "Phone number must contain only digits"
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "Enter your country"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter new password",
+        "error": "Password must be at least 8 characters with 1 uppercase letter, 1 number, and 1 symbol"
+      }
+    },
+    "buttons": {
+      "logout": "Logout",
+      "saveChanges": "Save Changes"
+    },
+    "messages": {
+      "updateSuccess": "Profile updated successfully"
+    }
+  },
+  "medicalHistory": {
+    "title": "Medical History",
+    "search": {
+      "placeholder": "Search conditions..."
+    },
+    "addCondition": {
+      "button": "Add Medical Condition",
+      "title": "Add Medical Condition",
+      "form": {
+        "title": {
+          "label": "Condition Title",
+          "placeholder": "Enter condition name",
+          "error": "Title is required"
+        },
+        "description": {
+          "label": "Description",
+          "placeholder": "Enter condition details",
+          "error": "Description is required"
+        },
+        "medications": {
+          "label": "Medications",
+          "placeholder": "Enter medication name",
+          "addButton": "Add",
+          "removeAriaLabel": "Remove medication"
+        },
+        "diagnosisDate": {
+          "label": "Diagnosis Date",
+          "placeholder": "Select date"
+        },
+        "submit": "Add Condition"
+      }
+    },
+    "conditionCard": {
+      "diagnosedLabel": "Diagnosed",
+      "descriptionLabel": "Description",
+      "medicationsLabel": "Medications",
+      "deleteButton": {
+        "label": "Delete",
+        "ariaLabel": "Delete condition"
+      }
+    },
+    "messages": {
+      "deleteError": "Error deleting condition:",
+      "fetchError": "Error fetching conditions:",
+      "addError": "Error adding condition:",
+      "validation": {
+        "title": "Title is required",
+        "description": "Description is required"
+      }
+    },
+    "noConditions": "No medical conditions found.",
+    "noMedications": "No medications listed",
+    "form": {
+      "date": {
+        "format": {
+          "long": {
+            "year": "numeric",
+            "month": "long",
+            "day": "numeric"
+          }
+        }
+      }
+    },
+    "actions": {
+      "redirect": {
+        "login": "Redirecting to login..."
+      }
+    }
+  },
+  "symptomsTracker": {
+    "title": "Symptoms Tracker",
+    "navigation": {
+      "home": "Home"
+    },
+    "weekNavigation": {
+      "weekOverview": "Week Overview",
+      "futureWeekDisabled": "Cannot navigate to future weeks without data"
+    },
+    "form": {
+      "date": {
+        "label": "Select Date"
+      },
+      "medicineName": {
+        "title": "Medicine",
+        "label": "Medicine Name",
+        "placeholder": "Enter medicine name",
+        "error": "Medicine name is required"
+      },
+      "dosage": {
+        "label": "Dosage",
+        "placeholder": "Enter dosage",
+        "error": "Dosage is required",
+        "futureDate": "Cannot add data for future dates"
+      },
+      "unit": {
+        "label": "Unit",
+        "error": "Unit is required",
+        "options": {
+          "mg": "mg",
+          "g": "g",
+          "ml": "ml",
+          "mcg": "mcg",
+          "IU": "IU",
+          "tablets": "tablets",
+          "capsules": "capsules"
+        }
+      },
+      "symptom": {
+        "label": "Symptoms",
+        "placeholder": "Enter symptoms (optional)"
+      }
+    },
+    "buttons": {
+      "addRecord": "My Record",
+      "addDosage": "Add Dosage",
+      "export": "Export",
+      "delete": "Delete",
+      "save": "Save",
+      "cancel": "Cancel",
+      "createGraph": "Create Graph"
+    },
+    "dialog": {
+      "addRecord": {
+        "title": "Add New Symptom Record",
+        "graphName": {
+          "label": "Graph Name",
+          "placeholder": "Enter graph name"
+        },
+        "symptomName": {
+          "label": "Symptom Name",
+          "placeholder": "Enter symptom name"
+        }
+      },
+      "updateDosage": {
+        "title": "Update Dosage"
+      }
+    },
+    "messages": {
+      "loadError": "Error loading graphs:",
+      "saveError": "Error saving graphs:"
+    },
+    "dateFormat": {
+      "display": {
+        "month": "short",
+        "day": "numeric",
+        "year": "numeric"
+      }
+    },
+    "footer": {
+      "description": "Empowering healthcare through AI-driven insights and personalized tracking, making health management seamless and intelligent.",
+      "sections": {
+        "support": {
+          "title": "Support",
+          "faqs": "FAQs",
+          "contact": "Contact"
+        },
+        "connect": {
+          "title": "Connect",
+          "twitter": "Twitter",
+          "linkedin": "LinkedIn",
+          "github": "GitHub"
+        }
+      },
+      "copyright": "© {year} Symvii. All rights reserved."
+    }
+  }
+}

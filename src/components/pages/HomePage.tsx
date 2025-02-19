@@ -42,6 +42,9 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { toggleDarkMode, initializeTheme } from '@/redux/features/themeSlice';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
+import { setLanguage, initializeLanguage } from '@/redux/features/languageSlice';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 type Testimonial = {
   id: number;
@@ -51,27 +54,28 @@ type Testimonial = {
 };
 
 const TestimonialSlider = () => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      text: "Symvii's AI health tracking has revolutionized my daily routine. The platform is user-friendly and offers essential insights that empower me to manage my health with ease. Living in San Francisco, it's a must-have tool for proactive health maintenance.",
-      author: "Oliver Smith",
-      location: "San Francisco, CA",
+      text: t('testimonials.item1.text'),
+      author: t('testimonials.item1.author'),
+      location: t('testimonials.item1.location'),
     },
     {
       id: 2,
-      text: "Symvii is a game-changer for managing my health. Its AI capabilities provide invaluable insights and make tracking my condition straightforward and stress-free. In New York, it's the ideal solution for anyone seeking effective, tech-driven health management.",
-      author: "Emma Thompson",
-      location: "New York City, NY",
+      text: t('testimonials.item2.text'),
+      author: t('testimonials.item2.author'),
+      location: t('testimonials.item2.location'),
     },
     {
       id: 3,
-      text: "Symvii has transformed my approach to health management. Their AI tracking is intuitive and provides real-time insights that help me stay on top of my condition effortlessly. Being in Greenwich, it's the perfect solution for anyone wanting innovative health support.",
-      author: "James Wilson",
-      location: "Greenwich, London",
+      text: t('testimonials.item3.text'),
+      author: t('testimonials.item3.author'),
+      location: t('testimonials.item3.location'),
     },
   ];
 
@@ -93,7 +97,7 @@ const TestimonialSlider = () => {
     <div className="relative bg-[#FAF7F0] dark:bg-[#4A4947] text-[#4A4947] dark:text-white py-20">
       <div className="container mx-auto px-4 md:px-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-10 container mx-auto">
-          What Our Users Say
+          {t('testimonials.title')}
         </h2>
 
         <div className="max-w-4xl mx-auto relative">
@@ -235,14 +239,67 @@ const BenefitSection = ({
   );
 };
 
+const LanguageSelector = () => {
+  const dispatch = useAppDispatch();
+  const { i18n } = useTranslation();
+  const currentLanguage = useAppSelector((state) => state.language.currentLanguage);
+
+  const handleLanguageChange = (value: string) => {
+    dispatch(setLanguage(value));
+    i18n.changeLanguage(value);
+  };
+
+  const languages = {
+    en: "English",
+    es: "Español",
+    ar: "عربي",
+    de: "Deutsch",
+    fr: "Français",
+    hi: "हिंदी",
+    ja: "日本語",
+    pt: "Português",
+    ru: "Русский",
+    ur: "اردو",
+    zh: "中文",
+  };
+
+  return (
+    <Select value={currentLanguage} onValueChange={handleLanguageChange}>
+      <SelectTrigger 
+        className="w-[100px] bg-white/10 border-none text-white hover:bg-white/20 
+                   transition-colors duration-200 focus:ring-0 focus:ring-offset-0"
+      >
+        <SelectValue placeholder={languages[currentLanguage as keyof typeof languages]} />
+      </SelectTrigger>
+      <SelectContent 
+        className="bg-[#FAF7F0] dark:bg-[#4A4947] border-[#D8D2C2] dark:border-[#3A3937]
+                   min-w-[100px] z-50"
+      >
+        {Object.entries(languages).map(([code, name]) => (
+          <SelectItem 
+            key={code}
+            value={code} 
+            className="text-[#4A4947] dark:text-white hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]
+                       cursor-pointer transition-colors duration-200"
+          >
+            {name}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
+  );
+};
+
 export default function HomePage() {
   const dispatch = useAppDispatch();
   const darkMode = useAppSelector((state) => state.theme.darkMode);
   const router = useRouter();
   const { isAuthenticated, user } = useAppSelector((state) => state.auth);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(initializeTheme());
+    dispatch(initializeLanguage());
   }, [dispatch]);
 
   const handleDarkModeToggle = () => {
@@ -284,7 +341,7 @@ export default function HomePage() {
               <div className="h-12 w-12 flex items-center justify-center">
                 <Image
                   src={darkMode ? "/Artboard-2.svg" : "/Artboard-1.svg"}
-                  alt={darkMode ? "Symvii Logo Dark" : "Symvii Logo Light"}
+                  alt={darkMode ? t('branding.logoAltDark') : t('branding.logoAltLight')}
                   width={48}
                   height={48}
                   priority
@@ -292,7 +349,7 @@ export default function HomePage() {
                 />
               </div>
               <span className="text-xl font-semibold text-primary dark:text-background-secondary-light">
-                Symvii
+                {t('branding.name')}
               </span>
             </Link>
 
@@ -302,29 +359,29 @@ export default function HomePage() {
                 onClick={() => scrollToSection("features")}
                 className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary"
               >
-                Features
+                {t('navigation.features')}
               </button>
               <button
                 onClick={() => scrollToSection("benefits")}
                 className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary"
               >
-                Benefits
+                {t('navigation.benefits')}
               </button>
               <button
                 onClick={() => scrollToSection("testimonials")}
                 className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary"
               >
-                Testimonials
+                {t('navigation.testimonials')}
               </button>
               <button
                 onClick={() => scrollToSection("faqs")}
                 className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary"
               >
-                FAQs
+                {t('navigation.faqs')}
               </button>
               <div className="relative group">
                 <button className="text-text-light dark:text-background-secondary-light hover:text-primary dark:hover:text-primary">
-                  Tools
+                  {t('navigation.tools')}
                 </button>
                 <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-[#FAF7F0] dark:bg-[#4A4947] ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div
@@ -338,32 +395,33 @@ export default function HomePage() {
                       className="block px-4 py-2 text-sm text-[#4A4947] dark:text-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]"
                       role="menuitem"
                     >
-                      BMI Calculator
+                      {t('tools.bmiCalculator')}
                     </Link>
                     <Link
                       href="/ai-doctor"
                       className="block px-4 py-2 text-sm text-[#4A4947] dark:text-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]"
                       role="menuitem"
                     >
-                      AI Doctor
+                      {t('tools.aiDoctor')}
                     </Link>
                     <Link
                       href="/symptoms-tracker"
                       className="block px-4 py-2 text-sm text-[#4A4947] dark:text-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]"
                       role="menuitem"
                     >
-                      Symptoms Tracker
+                      {t('tools.symptomsTracker')}
                     </Link>
                     <Link
                       href="/medical-history"
                       className="block px-4 py-2 text-sm text-[#4A4947] dark:text-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937]"
                       role="menuitem"
                     >
-                      Medical History
+                      {t('tools.medicalHistory')}
                     </Link>
                   </div>
                 </div>
               </div>
+              <LanguageSelector />
               {isAuthenticated ? (
                 <div className="relative group">
                   <Button 
@@ -372,7 +430,7 @@ export default function HomePage() {
                     onClick={() => router.push('/profile')}
                   >
                     <UserCircle className="h-5 w-5" />
-                    <span>{user?.name || 'Profile'}</span>
+                    <span>{user?.name || t('navigation.profile')}</span>
                   </Button>
                 </div>
               ) : (
@@ -380,7 +438,7 @@ export default function HomePage() {
                   <Button 
                     className="bg-primary hover:bg-primary-hover text-white rounded-full px-6"
                   >
-                    Login
+                    {t('navigation.login')}
                   </Button>
                 </Link>
               )}
@@ -399,6 +457,7 @@ export default function HomePage() {
 
             {/* Mobile Menu */}
             <div className="flex items-center space-x-4 md:hidden">
+              <LanguageSelector />
               <Button
                 onClick={handleDarkModeToggle}
                 variant="ghost"
@@ -440,7 +499,7 @@ export default function HomePage() {
                       />
                     </div>
                     <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">
-                      Symvii
+                      {t('branding.name')}
                     </span>
                   </div>
 
@@ -481,7 +540,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section with Fixed Background */}
+      {/* Hero Section */}
       <section
         className="pt-40 pb-16 px-4 relative min-h-screen bg-fixed bg-cover bg-center"
         style={{
@@ -493,7 +552,7 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 text-white">
               <h1 className="text-5xl font-bold leading-tight">
-                Your Personal AI-Powered Health Assistant
+                {t('hero.title')}
               </h1>
               {/* <p className="text-xl">
               A health service offering an AI-driven platform designed to support early detection and effective management of medical conditions. With our tools, you can track pre-existing conditions, monitor symptoms for new diagnoses, and make informed decisions about your health through AI-powered insights and professional guidance.
@@ -504,7 +563,7 @@ export default function HomePage() {
                     <Button 
                       className="bg-[#B17457] hover:bg-[#B17457]/90 text-white rounded-full px-8 py-3"
                     >
-                      Login
+                      {t('navigation.login')}
                     </Button>
                   </Link>
                   <Button
@@ -514,7 +573,7 @@ export default function HomePage() {
                                rounded-full px-8 py-3"
                     onClick={() => scrollToSection('faqs')}
                   >
-                    Learn more
+                    {t('hero.learnMore')}
                   </Button>
                 </div>
               )}
@@ -526,19 +585,19 @@ export default function HomePage() {
                     value="symptoms"
                     className="text-[#4A4947] dark:text-[#FAF7F0] transition-transform duration-300 transform hover:scale-105 active:scale-100"
                   >
-                    Symptoms
+                    {t('hero.tabs.symptoms.label')}
                   </TabsTrigger>
                   <TabsTrigger
                     value="diagnosis"
                     className="text-[#4A4947] dark:text-[#FAF7F0] transition-transform duration-300 transform hover:scale-105 active:scale-100"
                   >
-                    Diagnosis
+                    {t('hero.tabs.diagnosis.label')}
                   </TabsTrigger>
                   <TabsTrigger
                     value="treatment"
                     className="text-[#4A4947] dark:text-[#FAF7F0] transition-transform duration-300 transform hover:scale-105 active:scale-100"
                   >
-                    Treatment
+                    {t('hero.tabs.treatment.label')}
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent
@@ -546,11 +605,10 @@ export default function HomePage() {
                   className="bg-[#FAF7F0] dark:bg-[#4A4947] bg-opacity-20 backdrop-blur-sm rounded-b-xl p-6 transition-opacity duration-300 ease-in-out opacity-100"
                 >
                   <h3 className="text-xl font-semibold text-[#4A4947] dark:text-[#FAF7F0] mb-4">
-                    Track Your Symptoms
+                    {t('hero.tabs.symptoms.title')}
                   </h3>
                   <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                    Log and monitor your symptoms over time. Our AI analyzes
-                    patterns to provide insights into your health.
+                    {t('hero.tabs.symptoms.description')}
                   </p>
                 </TabsContent>
                 <TabsContent
@@ -558,11 +616,10 @@ export default function HomePage() {
                   className="bg-[#FAF7F0] dark:bg-[#4A4947] bg-opacity-20 backdrop-blur-sm rounded-b-xl p-6 transition-opacity duration-300 ease-in-out opacity-100"
                 >
                   <h3 className="text-xl font-semibold text-[#4A4947] dark:text-[#FAF7F0] mb-4">
-                    AI-Assisted Diagnosis
+                    {t('hero.tabs.diagnosis.title')}
                   </h3>
                   <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                    Our advanced AI helps identify potential health issues based
-                    on your symptoms and medical history.
+                    {t('hero.tabs.diagnosis.description')}
                   </p>
                 </TabsContent>
                 <TabsContent
@@ -570,11 +627,10 @@ export default function HomePage() {
                   className="bg-[#FAF7F0] dark:bg-[#4A4947] bg-opacity-20 backdrop-blur-sm rounded-b-xl p-6 transition-opacity duration-300 ease-in-out opacity-100"
                 >
                   <h3 className="text-xl font-semibold text-[#4A4947] dark:text-[#FAF7F0] mb-4">
-                    Personalized Treatment Plans
+                    {t('hero.tabs.treatment.title')}
                   </h3>
                   <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                    Receive tailored treatment recommendations and track your
-                    progress towards better health.
+                    {t('hero.tabs.treatment.description')}
                   </p>
                 </TabsContent>
               </Tabs>
@@ -589,7 +645,7 @@ export default function HomePage() {
         <div className="absolute inset-0">
           <Image
             src="/assets/human1.jpg"
-            alt="Health Monitoring Background"
+            alt={t('healthMonitoring.imageAlt')}
             fill
             className="object-cover"
             priority
@@ -606,19 +662,17 @@ export default function HomePage() {
             className="max-w-2xl text-white"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Precise health monitoring system
+              {t('healthMonitoring.title')}
             </h2>
             <p className="text-xl md:text-2xl mb-8 text-gray-100">
-              Empower your health journey with Symvii's innovative AI-driven
-              solutions, delivering precise insights for better management in
-              Greater London.
+              {t('healthMonitoring.description')}
             </p>
             <Link href="/symptoms-tracker">
               <Button
                 className="bg-[#B17457] hover:bg-[#B17457]/90 text-white rounded-full px-8 py-6 
                             text-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
               >
-                Track now
+                {t('healthMonitoring.trackNow')}
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </Link>
@@ -638,14 +692,10 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-6 text-[#4A4947] dark:text-[#FAF7F0]"
           >
-            Built to understand your health better.
+            {t('features.title')}
           </motion.h2>
           <p className="text-xl text-[#4A4947] dark:text-[#FAF7F0] mb-12">
-            Symvii creates innovative healthcare management software to help
-            individuals take control of their well-being. Our AI-powered
-            platform functions as a personal health companion, simplifying
-            symptom tracking, vital sign monitoring, and maintaining a detailed
-            medical history.
+            {t('features.description')}
           </p>
           {!isAuthenticated && (
             <div className="space-x-4">
@@ -653,7 +703,7 @@ export default function HomePage() {
                 <Button 
                   className="bg-[#B17457] hover:bg-[#B17457]/90 text-white rounded-full px-8 py-3"
                 >
-                  Login
+                  {t('navigation.login')}
                 </Button>
               </Link>
               <Button
@@ -663,7 +713,7 @@ export default function HomePage() {
                            rounded-full px-8 py-3"
                 onClick={() => scrollToSection('faqs')}
               >
-                Learn more
+                {t('features.learnMore')}
               </Button>
             </div>
           )}
@@ -679,7 +729,7 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-16 text-center text-[#4A4947] dark:text-[#FAF7F0]"
           >
-            Track Health Easily
+            {t('featuresGrid.title')}
           </motion.h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -693,11 +743,10 @@ export default function HomePage() {
                 <ActivitySquare className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-[#4A4947] dark:text-[#FAF7F0]">
-                Personalized Health Monitoring
+                {t('featuresGrid.items.monitoring.title')}
               </h3>
               <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                Track your health conditions with AI-driven insights tailored to
-                your unique needs.
+                {t('featuresGrid.items.monitoring.description')}
               </p>
             </motion.div>
 
@@ -711,11 +760,10 @@ export default function HomePage() {
                 <Bell className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-[#4A4947] dark:text-[#FAF7F0]">
-                Real-Time Condition Alerts
+                {t('featuresGrid.items.alerts.title')}
               </h3>
               <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                Receive instant notifications on any significant changes in your
-                health condition.
+                {t('featuresGrid.items.alerts.description')}
               </p>
             </motion.div>
 
@@ -729,11 +777,10 @@ export default function HomePage() {
                 <BarChart3 className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-[#4A4947] dark:text-[#FAF7F0]">
-                Comprehensive Data Analysis
+                {t('featuresGrid.items.analysis.title')}
               </h3>
               <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                Gain a deeper understanding of your health trends through
-                detailed data analytics.
+                {t('featuresGrid.items.analysis.description')}
               </p>
             </motion.div>
 
@@ -747,16 +794,16 @@ export default function HomePage() {
                 <Link2 className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3 text-[#4A4947] dark:text-[#FAF7F0]">
-                Seamless Integration Solutions
+                {t('featuresGrid.items.integration.title')}
               </h3>
               <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                Easily integrate our tracking tools with your existing
-                healthcare systems.
+                {t('featuresGrid.items.integration.description')}
               </p>
             </motion.div>
           </div>
         </div>
       </section>
+
       {/* Benefits Section */}
       <section
         id="benefits"
@@ -769,30 +816,30 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="text-4xl font-bold mb-12 text-center"
           >
-            <span className="text-[#B17457]">BENEFITS</span>
+            <span className="text-[#B17457]">{t('benefits.title.highlight')}</span>
             <br />
             <span className="text-5xl text-[#4A4947] dark:text-[#FAF7F0]">
-              More than just a health journal
+              {t('benefits.title.main')}
             </span>
           </motion.h2>
           <div className="space-y-8">
             <BenefitSection
-              title="AI-Powered Health Analysis"
-              description="Our advanced AI technology provides comprehensive health assessments, helping you understand your body's signals and potential health concerns."
+              title={t('benefits.items.analysis.title')}
+              description={t('benefits.items.analysis.description')}
               imageSrc="/assets/benefits1.jpg"
               imageAlt="AI Health Analysis"
               index={0}
             />
             <BenefitSection
-              title="Continuous Health Monitoring"
-              description="Track vital signs, symptoms, and medications over time with our intuitive monitoring features, allowing you to see patterns and improvements in your health."
+              title={t('benefits.items.monitoring.title')}
+              description={t('benefits.items.monitoring.description')}
               imageSrc="/assets/benefits2.jpg"
               imageAlt="Health Monitoring"
               index={1}
             />
             <BenefitSection
-              title="Professional Medical Insights"
-              description="Receive personalized health recommendations and insights based on your medical history and current symptoms, validated by healthcare professionals."
+              title={t('benefits.items.insights.title')}
+              description={t('benefits.items.insights.description')}
               imageSrc="/assets/benefits3.jpg"
               imageAlt="Medical Insights"
               index={2}
@@ -810,7 +857,7 @@ export default function HomePage() {
               transition={{ duration: 0.5 }}
               className="text-4xl md:text-5xl font-bold text-[#4A4947] dark:text-[#FAF7F0] leading-tight"
             >
-              Manage Chronic Illness with Symvii in Greater London
+              {t('locationSpecific.title')}
             </motion.h2>
 
             <motion.p
@@ -819,10 +866,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg md:text-xl text-[#4A4947]/80 dark:text-[#FAF7F0]/80 leading-relaxed"
             >
-              Symvii offers AI-powered symptom reporting and health tracking for
-              those seeking a diagnosis. Based in Greater London, we help
-              individuals with chronic illnesses monitor their conditions
-              effectively. Trust Symvii to support your health journey.
+              {t('locationSpecific.description')}
             </motion.p>
 
             {!isAuthenticated && (
@@ -831,7 +875,7 @@ export default function HomePage() {
                   className="mt-4 bg-[#B17457] hover:bg-[#B17457]/90 text-white rounded-full px-8 py-3 
                          shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  Login
+                  {t('navigation.login')}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
@@ -856,7 +900,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
                 className="text-4xl font-bold mb-4 dark:text-[#FAF7F0]"
               >
-                Questions?
+                {t('faqs.title.question')}
               </motion.h2>
               <motion.h2
                 initial={{ opacity: 0, x: -20 }}
@@ -864,12 +908,12 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl font-bold mb-8 dark:text-[#FAF7F0]"
               >
-                Answers.
+                {t('faqs.title.answer')}
               </motion.h2>
               {!isAuthenticated && (
                 <Link href="/login">
                   <Button className="bg-[#4A4947] dark:bg-[#FAF7F0] hover:bg-[#D8D2C2] dark:hover:bg-[#3A3937] text-[#FAF7F0] dark:text-[#4A4947] rounded-full px-8 py-3">
-                    Login
+                    {t('navigation.login')}
                   </Button>
                 </Link>
               )}
@@ -888,8 +932,8 @@ export default function HomePage() {
               >
                 <AccordionItem
                   key="1"
-                  aria-label="What is Symvii and how does it work?"
-                  title="What is Symvii and how does it work?"
+                  aria-label={t('faqs.items.1.title')}
+                  title={t('faqs.items.1.title')}
                   indicator={({ isOpen }) => (
                     <ChevronDown
                       className={`text-[#4A4947] dark:text-[#FAF7F0] transition-transform ${
@@ -898,17 +942,12 @@ export default function HomePage() {
                     />
                   )}
                 >
-                  Symvii is a comprehensive health monitoring platform that uses
-                  AI to help you document symptoms, track vital signs, and
-                  manage your overall health. Simply input your health data or
-                  concerns, and our AI will provide personalized insights and
-                  recommendations to help you make informed healthcare
-                  decisions.
+                  {t('faqs.items.1.content')}
                 </AccordionItem>
                 <AccordionItem
                   key="2"
-                  aria-label="What medical conditions can Symvii help monitor?"
-                  title="What medical conditions can Symvii help monitor?"
+                  aria-label={t('faqs.items.2.title')}
+                  title={t('faqs.items.2.title')}
                   indicator={({ isOpen }) => (
                     <ChevronDown
                       className={`text-[#4A4947] dark:text-[#FAF7F0] transition-transform ${
@@ -917,16 +956,12 @@ export default function HomePage() {
                     />
                   )}
                 >
-                  Symvii is designed to assist with a wide range of medical
-                  conditions, including chronic diseases, cardiovascular health,
-                  respiratory conditions, and general wellness monitoring. Our
-                  AI has been trained on diverse medical data to provide
-                  comprehensive health insights.
+                  {t('faqs.items.2.content')}
                 </AccordionItem>
                 <AccordionItem
                   key="3"
-                  aria-label="How accurate is the AI in analyzing health conditions?"
-                  title="How accurate is the AI in analyzing health conditions?"
+                  aria-label={t('faqs.items.3.title')}
+                  title={t('faqs.items.3.title')}
                   indicator={({ isOpen }) => (
                     <ChevronDown
                       className={`text-[#4A4947] dark:text-[#FAF7F0] transition-transform ${
@@ -935,15 +970,12 @@ export default function HomePage() {
                     />
                   )}
                 >
-                  Our AI system has been trained on millions of medical records
-                  and validated by healthcare professionals. While highly
-                  accurate, Symvii is designed as a support tool and should not
-                  replace professional medical diagnosis or treatment.
+                  {t('faqs.items.3.content')}
                 </AccordionItem>
                 <AccordionItem
                   key="4"
-                  aria-label="Is my medical data secure with Symvii?"
-                  title="Is my medical data secure with Symvii?"
+                  aria-label={t('faqs.items.4.title')}
+                  title={t('faqs.items.4.title')}
                   indicator={({ isOpen }) => (
                     <ChevronDown
                       className={`text-[#4A4947] dark:text-[#FAF7F0] transition-transform ${
@@ -952,16 +984,12 @@ export default function HomePage() {
                     />
                   )}
                 >
-                  Absolutely. We understand the sensitivity of medical
-                  information and take data security seriously. All your health
-                  data is encrypted and stored securely following HIPAA and GDPR
-                  guidelines. Your medical information is never shared without
-                  your explicit consent.
+                  {t('faqs.items.4.content')}
                 </AccordionItem>
                 <AccordionItem
                   key="5"
-                  aria-label="What should I do if Symvii identifies a potential health concern?"
-                  title="What should I do if Symvii identifies a potential health concern?"
+                  aria-label={t('faqs.items.5.title')}
+                  title={t('faqs.items.5.title')}
                   indicator={({ isOpen }) => (
                     <ChevronDown
                       className={`text-[#4A4947] dark:text-[#FAF7F0] transition-transform ${
@@ -970,11 +998,7 @@ export default function HomePage() {
                     />
                   )}
                 >
-                  If Symvii detects a potential health concern, it will provide
-                  detailed information about the condition and recommend
-                  appropriate next steps, including whether you should consult a
-                  healthcare provider. We always encourage seeking professional
-                  medical advice for any concerning health issues.
+                  {t('faqs.items.5.content')}
                 </AccordionItem>
               </Accordion>
             </div>
@@ -989,7 +1013,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center dark:text-[#FAF7F0]">
-            Contact Us
+            {t('contact.title')}
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
@@ -1000,7 +1024,7 @@ export default function HomePage() {
                       htmlFor="name"
                       className="text-[#4A4947] dark:text-[#FAF7F0]"
                     >
-                      Name
+                      {t('contact.form.name.label')}
                     </Label>
                     <Input
                       id="name"
@@ -1014,7 +1038,7 @@ export default function HomePage() {
                       htmlFor="email"
                       className="text-[#4A4947] dark:text-[#FAF7F0]"
                     >
-                      Email
+                      {t('contact.form.email.label')}
                     </Label>
                     <Input
                       id="email"
@@ -1029,7 +1053,7 @@ export default function HomePage() {
                       htmlFor="message"
                       className="text-[#4A4947] dark:text-[#FAF7F0]"
                     >
-                      Message
+                      {t('contact.form.message.label')}
                     </Label>
                     <Textarea
                       id="message"
@@ -1043,7 +1067,7 @@ export default function HomePage() {
                     type="submit"
                     className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 ease-in-out shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30"
                   >
-                    Send Message
+                    {t('contact.form.submit')}
                     <Send className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
@@ -1053,11 +1077,10 @@ export default function HomePage() {
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
               <CardContent className="p-6">
                 <h3 className="text-2xl font-semibold mb-6 text-[#4A4947] dark:text-[#FAF7F0]">
-                  Get in Touch
+                  {t('contact.info.title')}
                 </h3>
                 <p className="text-[#4A4947] dark:text-[#FAF7F0] mb-8">
-                  Have questions or feedback? We'd love to hear from you. Fill
-                  out the form and we'll get back to you as soon as possible.
+                  {t('contact.info.description')}
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
@@ -1110,76 +1133,76 @@ export default function HomePage() {
                   />
                 </div>
                 <span className="text-2xl font-bold text-white">
-                  Symvii
+                  {t('branding.name')}
                 </span>
               </Link>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Empowering healthcare through AI-driven insights and personalized tracking, making health management seamless and intelligent.
+                {t('footer.brand.description')}
               </p>
             </div>
 
             {/* Navigation Links */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-8">
               <div>
-                <h3 className="text-white font-semibold mb-4">Product</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.product.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#features" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Features
+                      {t('footer.navigation.product.items.features')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#benefits" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Benefits
+                      {t('footer.navigation.product.items.benefits')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#testimonials" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Testimonials
+                      {t('footer.navigation.product.items.testimonials')}
                     </Link>
                   </li>
                 </ul>
               </div>
               
               <div>
-                <h3 className="text-white font-semibold mb-4">Tools</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.tools.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="/bmi-calculator" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      BMI Calculator
+                      {t('footer.navigation.tools.items.bmiCalculator')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/ai-doctor" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      AI Doctor
+                      {t('footer.navigation.tools.items.aiDoctor')}
                     </Link>
                   </li>
                   <li>
                     <Link href="/symptoms-tracker" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Symptoms Tracker
+                      {t('footer.navigation.tools.items.symptomsTracker')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Support</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.support.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link href="#faqs" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      FAQs
+                      {t('footer.navigation.support.items.faqs')}
                     </Link>
                   </li>
                   <li>
                     <Link href="#contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-sm">
-                      Contact
+                      {t('footer.navigation.support.items.contact')}
                     </Link>
                   </li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="text-white font-semibold mb-4">Connect</h3>
+                <h3 className="text-white font-semibold mb-4">{t('footer.navigation.connect.title')}</h3>
                 <ul className="space-y-3">
                   <li>
                     <Link 
@@ -1187,7 +1210,7 @@ export default function HomePage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      Twitter
+                      {t('footer.navigation.connect.items.twitter')}
                     </Link>
                   </li>
                   <li>
@@ -1196,7 +1219,7 @@ export default function HomePage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      LinkedIn
+                      {t('footer.navigation.connect.items.linkedin')}
                     </Link>
                   </li>
                   <li>
@@ -1205,7 +1228,7 @@ export default function HomePage() {
                       target="_blank"
                       className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                     >
-                      GitHub
+                      {t('footer.navigation.connect.items.github')}
                     </Link>
                   </li>
                 </ul>

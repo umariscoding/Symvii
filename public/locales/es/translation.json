@@ -1,0 +1,572 @@
+{
+  "testimonials": {
+    "title": "Lo que dicen nuestros usuarios",
+    "item1": {
+      "text": "El seguimiento de salud de AI de Symvii ha revolucionado mi rutina diaria. ",
+      "author": "Oliver Smith",
+      "location": "San Francisco, CA"
+    },
+    "item2": {
+      "text": "Symvii cambia el juego para administrar mi salud. ",
+      "author": "Emma Thompson",
+      "location": "Ciudad de Nueva York, NY"
+    },
+    "item3": {
+      "text": "Symvii ha transformado mi enfoque para la gestión de la salud. ",
+      "author": "James Wilson",
+      "location": "Greenwich, Londres"
+    }
+  },
+  "navigation": {
+    "features": "Características",
+    "benefits": "Beneficios",
+    "testimonials": "Testimonios",
+    "faqs": "Preguntas frecuentes",
+    "tools": "Herramientas",
+    "login": "Acceso",
+    "profile": "Perfil"
+  },
+  "tools": {
+    "bmiCalculator": "Calculadora de IMC",
+    "aiDoctor": "AI Doctor",
+    "symptomsTracker": "Rastreador de síntomas",
+    "medicalHistory": "Antecedentes médicos"
+  },
+  "branding": {
+    "name": "Symvii",
+    "logoAltDark": "Logotipo symvii oscuro",
+    "logoAltLight": "Symvii LOGO LIGHT"
+  },
+  "hero": {
+    "title": "Su asistente personal de salud con IA con IA",
+    "learnMore": "Obtenga más información",
+    "tabs": {
+      "symptoms": {
+        "label": "Síntomas",
+        "title": "Seguimiento de sus síntomas",
+        "description": "Registre y monitoree sus síntomas con el tiempo. "
+      },
+      "diagnosis": {
+        "label": "Diagnóstico",
+        "title": "Diagnóstico asistido por AI-AI",
+        "description": "Nuestra IA avanzada ayuda a identificar posibles problemas de salud en función de sus síntomas e historial médico."
+      },
+      "treatment": {
+        "label": "Tratamiento",
+        "title": "Planes de tratamiento personalizados",
+        "description": "Reciba recomendaciones de tratamiento personalizadas y rastree su progreso hacia una mejor salud."
+      }
+    }
+  },
+  "healthMonitoring": {
+    "title": "Sistema preciso de monitoreo de salud",
+    "description": "Empodera su viaje de salud con las innovadoras soluciones de AI de Symvii, ofreciendo ideas precisas para una mejor gestión en el Gran Londres.",
+    "trackNow": "Pista ahora",
+    "imageAlt": "Antecedentes de monitoreo de la salud"
+  },
+  "features": {
+    "title": "Construido para comprender mejor su salud.",
+    "description": "SymVII crea un software innovador de gestión de salud para ayudar a las personas a tomar el control de su bienestar. ",
+    "learnMore": "Obtenga más información"
+  },
+  "featuresGrid": {
+    "title": "Rastrear la salud fácilmente",
+    "items": {
+      "monitoring": {
+        "title": "Monitoreo de salud personalizado",
+        "description": "Haga un seguimiento de sus condiciones de salud con ideas impulsadas por IA adaptadas a sus necesidades únicas."
+      },
+      "alerts": {
+        "title": "Alertas de condición en tiempo real",
+        "description": "Reciba notificaciones instantáneas sobre cualquier cambio significativo en su estado de salud."
+      },
+      "analysis": {
+        "title": "Análisis de datos completo",
+        "description": "Obtenga una comprensión más profunda de sus tendencias de salud a través del análisis detallado de datos."
+      },
+      "integration": {
+        "title": "Soluciones de integración perfecta",
+        "description": "Integre fácilmente nuestras herramientas de seguimiento con sus sistemas de salud existentes."
+      }
+    }
+  },
+  "benefits": {
+    "title": {
+      "highlight": "BENEFICIOS",
+      "main": "Más que una simple revista de salud"
+    },
+    "items": {
+      "analysis": {
+        "title": "Análisis de salud con IA",
+        "description": "Nuestra tecnología avanzada de IA proporciona evaluaciones de salud integrales, lo que le ayuda a comprender las señales de su cuerpo y las posibles problemas de salud.",
+        "imageAlt": "Análisis de salud de IA"
+      },
+      "monitoring": {
+        "title": "Monitoreo continuo de salud",
+        "description": "Rastree signos vitales, síntomas y medicamentos a lo largo del tiempo con nuestras características de monitoreo intuitivos, lo que le permite ver patrones y mejoras en su salud.",
+        "imageAlt": "Monitoreo de la salud"
+      },
+      "insights": {
+        "title": "Ideas médicas profesionales",
+        "description": "Reciba recomendaciones e ideas de salud personalizados basados ​​en su historial médico y los síntomas actuales, validados por profesionales de la salud.",
+        "imageAlt": "Ideas médicas"
+      }
+    }
+  },
+  "locationSpecific": {
+    "title": "Gestionar enfermedades crónicas con Symvii en el Gran Londres",
+    "description": "SymVII ofrece informes de síntomas con IA y seguimiento de salud para aquellos que buscan un diagnóstico. "
+  },
+  "faqs": {
+    "title": {
+      "question": "¿Preguntas?",
+      "answer": "Respuestas."
+    },
+    "items": {
+      "1": {
+        "title": "¿Qué es Symvii y cómo funciona?",
+        "content": "SymVII es una plataforma integral de monitoreo de salud que utiliza IA para ayudarlo a documentar los síntomas, rastrear signos vitales y administrar su salud general. "
+      },
+      "2": {
+        "title": "¿Qué condiciones médicas pueden ayudar a Symvii a monitorear?",
+        "content": "SYMVII está diseñado para ayudar con una amplia gama de afecciones médicas, que incluyen enfermedades crónicas, salud cardiovascular, afecciones respiratorias y monitoreo general de bienestar. "
+      },
+      "3": {
+        "title": "¿Qué tan precisa es la IA en el análisis de las condiciones de salud?",
+        "content": "Nuestro sistema de IA ha sido capacitado en millones de registros médicos y validado por profesionales de la salud. "
+      },
+      "4": {
+        "title": "¿Mis datos médicos son seguros con SymVII?",
+        "content": "Absolutamente. "
+      },
+      "5": {
+        "title": "¿Qué debo hacer si SymVII identifica una preocupación de salud potencial?",
+        "content": "Si SYMVII detecta una preocupación de salud potencial, proporcionará información detallada sobre la condición y recomendará los próximos pasos apropiados, incluida si debe consultar a un proveedor de atención médica. "
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "name": "Symvii",
+      "logoAlt": "Logotipo de Symvii",
+      "description": "Empoderar la atención médica a través de ideas impulsadas por la IA y un seguimiento personalizado, lo que hace que la gestión de la salud sea perfecta e inteligente."
+    },
+    "navigation": {
+      "product": {
+        "title": "Producto",
+        "items": {
+          "features": "Características",
+          "benefits": "Beneficios",
+          "testimonials": "Testimonios"
+        }
+      },
+      "tools": {
+        "title": "Herramientas",
+        "items": {
+          "bmiCalculator": "Calculadora de IMC",
+          "aiDoctor": "AI Doctor",
+          "symptomsTracker": "Rastreador de síntomas"
+        }
+      },
+      "support": {
+        "title": "Apoyo",
+        "items": {
+          "faqs": "Preguntas frecuentes",
+          "contact": "Contacto"
+        }
+      },
+      "connect": {
+        "title": "Conectar",
+        "items": {
+          "twitter": "Gorjeo",
+          "linkedin": "LinkedIn",
+          "github": "Github"
+        }
+      }
+    },
+    "copyright": {
+      "text": "© {año} Symvii. "
+    }
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "form": {
+      "name": {
+        "label": "Nombre"
+      },
+      "email": {
+        "label": "Correo electrónico"
+      },
+      "message": {
+        "label": "Mensaje"
+      },
+      "submit": "Enviar un mensaje"
+    },
+    "info": {
+      "title": "Ponerse en contacto",
+      "description": "¿Tiene preguntas o comentarios? ",
+      "contact": {
+        "phone": "+1 (555) 123-4567",
+        "email": "contact@symvii.com",
+        "address": "123 Health Street, Med City, MC 12345"
+      }
+    }
+  },
+  "aiDoctor": {
+    "navigation": {
+      "home": "Hogar",
+      "logo": {
+        "dark": "Logotipo symvii oscuro",
+        "light": "Symvii LOGO LIGHT"
+      }
+    },
+    "consultation": {
+      "title": "Consulta de AI Doctor",
+      "form": {
+        "symptom": {
+          "label": "Ingrese síntoma",
+          "placeholder": "Describe tus síntomas aquí ..."
+        },
+        "age": {
+          "label": "Edad",
+          "placeholder": "Ingresa tu edad"
+        },
+        "country": {
+          "label": "País de residencia o visitado recientemente",
+          "placeholder": "Entrar en el país"
+        },
+        "sex": {
+          "label": "Sexo al nacer",
+          "placeholder": "Seleccionar",
+          "options": {
+            "male": "Masculino",
+            "female": "Femenino",
+            "other": "Otro"
+          }
+        },
+        "submit": {
+          "analyzing": "Análisis ...",
+          "default": "Entregar"
+        }
+      }
+    },
+    "disclaimer": {
+      "title": "Descargo de responsabilidad de AI Doctor",
+      "description": "Este médico de IA es solo para fines informativos y no reemplaza el asesoramiento médico, el diagnóstico o el tratamiento profesionales. ",
+      "point1": "Proporciona información de salud general",
+      "point2": "No es un sustituto de asesoramiento médico profesional",
+      "point3": "No se puede diagnosticar afecciones específicas",
+      "point4": "Buscar atención médica inmediata para emergencias",
+      "reminder": "Recuerde, su salud es importante. ",
+      "learnMore": "Obtenga más información sobre la IA en la atención médica"
+    },
+    "analysis": {
+      "title": "Análisis del médico de IA"
+    },
+    "error": {
+      "message": "Se produjo un error al procesar su solicitud. "
+    }
+  },
+  "bmiCalculator": {
+    "title": "Calculadora de IMC",
+    "form": {
+      "height": {
+        "label": "Altura",
+        "placeholder": {
+          "ft": "pie",
+          "in": "en"
+        }
+      },
+      "weight": {
+        "label": "Peso"
+      },
+      "units": {
+        "cm": "centímetro",
+        "in": "en",
+        "ft": "pie",
+        "kg": "kg",
+        "lbs": "lbs"
+      },
+      "calculate": "Calcular el IMC"
+    },
+    "results": {
+      "bmi": "Tu IMC",
+      "category": "Categoría",
+      "categories": {
+        "underweight": "Bajo peso",
+        "normal": "Peso normal",
+        "overweight": "Sobrepeso",
+        "obese": "Obeso"
+      },
+      "ranges": {
+        "underweight": "<18.5",
+        "normal": "18.5-24.9",
+        "overweight": "25-29.9",
+        "obese": "≥ 30"
+      }
+    },
+    "info": {
+      "title": "Comprender el IMC",
+      "description": "El índice de masa corporal (IMC) es una simple medida de grasa corporal basada en la altura y el peso. ",
+      "categories": {
+        "underweight": "Informe: IMC menos de 18.5",
+        "normal": "Peso normal: IMC 18.5 a 24.9",
+        "overweight": "Sobrepeso: IMC 25 a 29.9",
+        "obese": "Obeso: IMC 30 o más"
+      },
+      "disclaimer": "Si bien el IMC es una herramienta útil, no es una medida perfecta. ",
+      "learnMore": "Aprenda más sobre el IMC"
+    }
+  },
+  "login": {
+    "title": {
+      "login": "Acceso",
+      "signup": "Crear una cuenta"
+    },
+    "form": {
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "Ingrese su correo electrónico"
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Ingrese su contraseña"
+      },
+      "name": {
+        "label": "Nombre completo",
+        "placeholder": "Ingrese su nombre completo"
+      },
+      "phone": {
+        "label": "Número de teléfono",
+        "placeholder": "Ingrese su número de teléfono"
+      },
+      "country": {
+        "label": "País",
+        "placeholder": "Entra en tu país"
+      },
+      "submit": {
+        "login": "Iniciar sesión",
+        "signup": "Crear una cuenta",
+        "loading": "Espere por favor..."
+      }
+    },
+    "toggleAccount": {
+      "signup": "¿Necesitas una cuenta? ",
+      "login": "¿Ya tienes una cuenta? "
+    },
+    "error": {
+      "invalidCredentials": "El correo electrónico o la contraseña que ingresó es incorrecto",
+      "generic": "Ocurrió un error. "
+    },
+    "navigation": {
+      "home": "Hogar",
+      "logo": {
+        "dark": "Logotipo symvii oscuro",
+        "light": "Symvii LOGO LIGHT"
+      }
+    }
+  },
+  "profile": {
+    "navigation": {
+      "backToHome": "Volver a casa"
+    },
+    "title": "Configuración de perfil",
+    "form": {
+      "name": {
+        "label": "Nombre",
+        "placeholder": "Ingrese su nombre"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "Ingrese su correo electrónico"
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "Ingrese su número de teléfono",
+        "error": "El número de teléfono debe contener solo dígitos"
+      },
+      "country": {
+        "label": "País",
+        "placeholder": "Entra en tu país"
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Ingrese una nueva contraseña",
+        "error": "La contraseña debe tener al menos 8 caracteres con 1 letra mayúscula, 1 número y 1 símbolo"
+      }
+    },
+    "buttons": {
+      "logout": "Cierre de sesión",
+      "saveChanges": "Guardar cambios"
+    },
+    "messages": {
+      "updateSuccess": "Perfil actualizado con éxito"
+    }
+  },
+  "medicalHistory": {
+    "title": "Antecedentes médicos",
+    "search": {
+      "placeholder": "Condiciones de búsqueda ..."
+    },
+    "addCondition": {
+      "button": "Agregar condición médica",
+      "title": "Agregar condición médica",
+      "form": {
+        "title": {
+          "label": "Título de condición",
+          "placeholder": "Ingrese el nombre de la condición",
+          "error": "Se requiere título"
+        },
+        "description": {
+          "label": "Descripción",
+          "placeholder": "Ingrese los detalles de la condición",
+          "error": "Se requiere una descripción"
+        },
+        "medications": {
+          "label": "Medicamentos",
+          "placeholder": "Ingrese el nombre de la medicación",
+          "addButton": "Agregar",
+          "removeAriaLabel": "Eliminar la medicación"
+        },
+        "diagnosisDate": {
+          "label": "Fecha de diagnóstico",
+          "placeholder": "Fecha de selección"
+        },
+        "submit": "Agregar condición"
+      }
+    },
+    "conditionCard": {
+      "diagnosedLabel": "Diagnosticado",
+      "descriptionLabel": "Descripción",
+      "medicationsLabel": "Medicamentos",
+      "deleteButton": {
+        "label": "Borrar",
+        "ariaLabel": "Eliminar condición"
+      }
+    },
+    "messages": {
+      "deleteError": "Error de eliminación de la condición:",
+      "fetchError": "Error en condiciones de recuperación:",
+      "addError": "Error de agregar condición:",
+      "validation": {
+        "title": "Se requiere título",
+        "description": "Se requiere una descripción"
+      }
+    },
+    "noConditions": "No se encontraron condiciones médicas.",
+    "noMedications": "No hay medicamentos enumerados",
+    "form": {
+      "date": {
+        "format": {
+          "long": {
+            "year": "numérico",
+            "month": "largo",
+            "day": "numérico"
+          }
+        }
+      }
+    },
+    "actions": {
+      "redirect": {
+        "login": "Redirigir para iniciar sesión ..."
+      }
+    }
+  },
+  "symptomsTracker": {
+    "title": "Rastreador de síntomas",
+    "navigation": {
+      "home": "Hogar"
+    },
+    "weekNavigation": {
+      "weekOverview": "Descripción de la semana",
+      "futureWeekDisabled": "No se puede navegar a las futuras semanas sin datos"
+    },
+    "form": {
+      "date": {
+        "label": "Fecha de selección"
+      },
+      "medicineName": {
+        "title": "Medicamento",
+        "label": "Nombre",
+        "placeholder": "Ingrese el nombre de la medicina",
+        "error": "Se requiere un nombre de nombre"
+      },
+      "dosage": {
+        "label": "Dosificación",
+        "placeholder": "Ingrese la dosis",
+        "error": "Se requiere dosis",
+        "futureDate": "No se puede agregar datos para fechas futuras"
+      },
+      "unit": {
+        "label": "Unidad",
+        "error": "Se requiere la unidad",
+        "options": {
+          "mg": "mg",
+          "g": "gramo",
+          "ml": "ml",
+          "mcg": "MCG",
+          "IU": "IU",
+          "tablets": "tabletas",
+          "capsules": "cápsulas"
+        }
+      },
+      "symptom": {
+        "label": "Síntomas",
+        "placeholder": "Ingrese síntomas (opcionales)"
+      }
+    },
+    "buttons": {
+      "addRecord": "Mi récord",
+      "addDosage": "Agregar dosis",
+      "export": "Exportar",
+      "delete": "Borrar",
+      "save": "Ahorrar",
+      "cancel": "Cancelar",
+      "createGraph": "Crear gráfico"
+    },
+    "dialog": {
+      "addRecord": {
+        "title": "Agregar nuevo registro de síntomas",
+        "graphName": {
+          "label": "Nombre del gráfico",
+          "placeholder": "Ingrese el nombre del gráfico"
+        },
+        "symptomName": {
+          "label": "Nombre de síntoma",
+          "placeholder": "Ingrese el nombre de los síntomas"
+        }
+      },
+      "updateDosage": {
+        "title": "Dosis de actualización"
+      }
+    },
+    "messages": {
+      "loadError": "Error de carga de gráficos:",
+      "saveError": "Gráficos de ahorro de errores:"
+    },
+    "dateFormat": {
+      "display": {
+        "month": "corto",
+        "day": "numérico",
+        "year": "numérico"
+      }
+    },
+    "footer": {
+      "description": "Empoderar la atención médica a través de ideas impulsadas por la IA y un seguimiento personalizado, lo que hace que la gestión de la salud sea perfecta e inteligente.",
+      "sections": {
+        "support": {
+          "title": "Apoyo",
+          "faqs": "Preguntas frecuentes",
+          "contact": "Contacto"
+        },
+        "connect": {
+          "title": "Conectar",
+          "twitter": "Gorjeo",
+          "linkedin": "LinkedIn",
+          "github": "Github"
+        }
+      },
+      "copyright": "© {año} Symvii. "
+    }
+  }
+}

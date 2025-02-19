@@ -18,6 +18,7 @@ import Image from "next/image";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { toggleDarkMode, initializeTheme } from "@/redux/features/themeSlice";
 import GaugeChart from "react-gauge-chart";
+import { useTranslation } from 'react-i18next';
 
 export default function BMICalculator() {
   const dispatch = useAppDispatch();
@@ -29,6 +30,7 @@ export default function BMICalculator() {
   const [feet, setFeet] = useState("");
   const [inches, setInches] = useState("");
   const [bmi, setBMI] = useState<number | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(initializeTheme());
@@ -83,10 +85,10 @@ export default function BMICalculator() {
 
   // Add BMI ranges for the gauge chart
   const bmiRanges = [
-    { label: "Underweight", range: "< 18.5", color: "#D8D2C2" },
-    { label: "Normal", range: "18.5-24.9", color: "#B17457" },
-    { label: "Overweight", range: "25-29.9", color: "#E6A57E" },
-    { label: "Obese", range: "≥ 30", color: "#8B4513" },
+    { label: t('bmiCalculator.results.categories.underweight'), range: "< 18.5", color: "#D8D2C2" },
+    { label: t('bmiCalculator.results.categories.normal'), range: "18.5-24.9", color: "#B17457" },
+    { label: t('bmiCalculator.results.categories.overweight'), range: "25-29.9", color: "#E6A57E" },
+    { label: t('bmiCalculator.results.categories.obese'), range: "≥ 30", color: "#8B4513" },
   ];
 
   return (
@@ -115,7 +117,7 @@ export default function BMICalculator() {
                   href="/"
                   className="text-[#4A4947] dark:text-[#D8D2C2] hover:text-[#B17457] dark:hover:text-[#B17457]"
                 >
-                  Home
+                  {t('login.navigation.home')}
                 </Link>
               </div>
               <Button
@@ -135,7 +137,7 @@ export default function BMICalculator() {
 
         <div className="container mx-auto px-4 pt-24 pb-16">
           <h1 className="text-4xl font-bold mb-8 text-center">
-            BMI Calculator
+            {t('bmiCalculator.title')}
           </h1>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
@@ -143,7 +145,7 @@ export default function BMICalculator() {
                 <form onSubmit={calculateBMI} className="space-y-4">
                   <div className="flex space-x-4">
                     <div className="flex-1">
-                      <Label htmlFor="height">Height</Label>
+                      <Label htmlFor="height">{t('bmiCalculator.form.height.label')}</Label>
                       <div className="flex mt-1">
                         {heightUnit === "ft" ? (
                           <div className="flex w-full">
@@ -153,7 +155,7 @@ export default function BMICalculator() {
                               value={feet}
                               onChange={(e) => setFeet(e.target.value)}
                               min="0"
-                              placeholder="ft"
+                              placeholder={t('bmiCalculator.form.height.placeholder.ft')}
                               required
                               className="rounded-r-none shadow-sm dark:shadow-[#4A4947]/20 border-[#D8D2C2] dark:border-[#B17457] focus:border-[#B17457] dark:focus:border-[#D8D2C2] bg-white dark:bg-[#4A4947]"
                             />
@@ -164,7 +166,7 @@ export default function BMICalculator() {
                               onChange={(e) => setInches(e.target.value)}
                               min="0"
                               max="11"
-                              placeholder="in"
+                              placeholder={t('bmiCalculator.form.height.placeholder.in')}
                               required
                               className="rounded-none shadow-sm dark:shadow-[#4A4947]/20 border-[#D8D2C2] dark:border-[#B17457] focus:border-[#B17457] dark:focus:border-[#D8D2C2] bg-white dark:bg-[#4A4947]"
                             />
@@ -191,7 +193,7 @@ export default function BMICalculator() {
                           }}
                         >
                           <SelectTrigger className="w-[80px] rounded-l-none bg-white dark:bg-[#4A4947] shadow-sm dark:shadow-[#4A4947]/20">
-                            <SelectValue placeholder="Unit" />
+                            <SelectValue placeholder={t('bmiCalculator.form.units.placeholder')} />
                           </SelectTrigger>
                           <SelectContent className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-md dark:shadow-[#4A4947]/30">
                             <SelectItem
@@ -217,7 +219,7 @@ export default function BMICalculator() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <Label htmlFor="weight">Weight</Label>
+                      <Label htmlFor="weight">{t('bmiCalculator.form.weight.label')}</Label>
                       <div className="flex mt-1">
                         <Input
                           id="weight"
@@ -233,7 +235,7 @@ export default function BMICalculator() {
                           onValueChange={setWeightUnit}
                         >
                           <SelectTrigger className="w-[80px] rounded-l-none bg-white dark:bg-[#4A4947] shadow-sm dark:shadow-[#4A4947]/20 transition-all duration-300 ease-in-out hover:bg-gray-50 dark:hover:bg-[#4A4947] border-[#D8D2C2] dark:border-[#B17457] focus:border-[#B17457] dark:focus:border-[#D8D2C2]">
-                            <SelectValue placeholder="Unit" />
+                            <SelectValue placeholder={t('bmiCalculator.form.units.placeholder')} />
                           </SelectTrigger>
                           <SelectContent className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-md dark:shadow-[#4A4947]/30">
                             <SelectItem
@@ -257,7 +259,7 @@ export default function BMICalculator() {
                     type="submit"
                     className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 ease-in-out shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30"
                   >
-                    Calculate BMI
+                    {t('bmiCalculator.form.calculate')}
                   </Button>
                 </form>
                 {bmi !== null && (
@@ -278,10 +280,10 @@ export default function BMICalculator() {
                     </div>
                     <div className="text-center">
                       <p className="text-3xl font-bold text-[#B17457] dark:text-[#D8D2C2]">
-                        Your BMI: {bmi}
+                        {t('bmiCalculator.results.bmi')}: {bmi}
                       </p>
                       <p className="text-xl mt-2 text-[#B17457] dark:text-[#D8D2C2]">
-                        Category: {getBMICategory(bmi)}
+                        {t('bmiCalculator.results.category')}: {t(`bmiCalculator.results.categories.${getBMICategory(bmi).toLowerCase().replace(' ', '')}`)}
                       </p>
                       <div className="mt-4 grid grid-cols-4 gap-2 text-sm">
                         {bmiRanges.map((range, index) => (
@@ -303,22 +305,19 @@ export default function BMICalculator() {
             <Card className="bg-[#FAF7F0] dark:bg-[#4A4947] shadow-xl border border-[#D8D2C2] dark:border-[#B17457]">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-semibold mb-4">
-                  Understanding BMI
+                  {t('bmiCalculator.info.title')}
                 </h2>
                 <p className="mb-4">
-                  Body Mass Index (BMI) is a simple measure of body fat based on
-                  height and weight. It applies to adult men and women.
+                  {t('bmiCalculator.info.description')}
                 </p>
                 <ul className="list-disc list-inside space-y-2 mb-4">
-                  <li>Underweight: BMI less than 18.5</li>
-                  <li>Normal weight: BMI 18.5 to 24.9</li>
-                  <li>Overweight: BMI 25 to 29.9</li>
-                  <li>Obese: BMI 30 or greater</li>
+                  <li>{t('bmiCalculator.info.categories.underweight')}</li>
+                  <li>{t('bmiCalculator.info.categories.normal')}</li>
+                  <li>{t('bmiCalculator.info.categories.overweight')}</li>
+                  <li>{t('bmiCalculator.info.categories.obese')}</li>
                 </ul>
                 <p className="mb-4">
-                  While BMI is a useful tool, it's not a perfect measure.
-                  Factors like muscle mass, age, and gender can affect its
-                  accuracy.
+                  {t('bmiCalculator.info.disclaimer')}
                 </p>
                 <a
                   href="https://en.wikipedia.org/wiki/Body_mass_index"
@@ -327,7 +326,7 @@ export default function BMICalculator() {
                   className="block w-full"
                 >
                   <Button className="w-full bg-[#B17457] hover:bg-[#B17457]/90 text-white transition-all duration-300 ease-in-out shadow-md hover:shadow-lg dark:shadow-[#4A4947]/30">
-                    Learn More About BMI <ArrowRight className="ml-2 h-4 w-4" />
+                    {t('bmiCalculator.info.learnMore')} <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
               </CardContent>
@@ -351,26 +350,24 @@ export default function BMICalculator() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-2xl font-bold text-white">Symvii</span>
+                  <span className="text-2xl font-bold text-white">{t('footer.brand.name')}</span>
                 </Link>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Empowering healthcare through AI-driven insights and
-                  personalized tracking, making health management seamless and
-                  intelligent.
+                  {t('footer.brand.description')}
                 </p>
               </div>
 
               {/* Navigation Links */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-8">
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Product</h3>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.product.title')}</h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="#features"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Features
+                        {t('footer.navigation.product.items.features')}
                       </Link>
                     </li>
                     <li>
@@ -378,7 +375,7 @@ export default function BMICalculator() {
                         href="#benefits"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Benefits
+                        {t('footer.navigation.product.items.benefits')}
                       </Link>
                     </li>
                     <li>
@@ -386,21 +383,21 @@ export default function BMICalculator() {
                         href="#testimonials"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Testimonials
+                        {t('footer.navigation.product.items.testimonials')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Tools</h3>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.tools.title')}</h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="/bmi-calculator"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        BMI Calculator
+                        {t('footer.navigation.tools.items.bmiCalculator')}
                       </Link>
                     </li>
                     <li>
@@ -408,7 +405,7 @@ export default function BMICalculator() {
                         href="/ai-doctor"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        AI Doctor
+                        {t('footer.navigation.tools.items.aiDoctor')}
                       </Link>
                     </li>
                     <li>
@@ -416,21 +413,21 @@ export default function BMICalculator() {
                         href="/symptoms-tracker"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Symptoms Tracker
+                        {t('footer.navigation.tools.items.symptomsTracker')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Support</h3>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.support.title')}</h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
                         href="#faqs"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        FAQs
+                        {t('footer.navigation.support.items.faqs')}
                       </Link>
                     </li>
                     <li>
@@ -438,14 +435,14 @@ export default function BMICalculator() {
                         href="#contact"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Contact
+                        {t('footer.navigation.support.items.contact')}
                       </Link>
                     </li>
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-white font-semibold mb-4">Connect</h3>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.connect.title')}</h3>
                   <ul className="space-y-3">
                     <li>
                       <Link
@@ -453,7 +450,7 @@ export default function BMICalculator() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        Twitter
+                        {t('footer.navigation.connect.items.twitter')}
                       </Link>
                     </li>
                     <li>
@@ -462,7 +459,7 @@ export default function BMICalculator() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        LinkedIn
+                        {t('footer.navigation.connect.items.linkedin')}
                       </Link>
                     </li>
                     <li>
@@ -471,7 +468,7 @@ export default function BMICalculator() {
                         target="_blank"
                         className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
-                        GitHub
+                        {t('footer.navigation.connect.items.github')}
                       </Link>
                     </li>
                   </ul>

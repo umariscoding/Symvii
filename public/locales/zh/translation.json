@@ -1,0 +1,572 @@
+{
+    "testimonials": {
+      "title": "我们的用户怎么说",
+      "item1": {
+        "text": "Symvii的AI健康跟踪已彻底改变了我的日常工作。",
+        "author": "奥利弗·史密斯",
+        "location": "加利福尼亚州旧金山"
+      },
+      "item2": {
+        "text": "Symvii是管理我的健康的游戏规则改变者。",
+        "author": "艾玛·汤普森（Emma Thompson）",
+        "location": "纽约市纽约市"
+      },
+      "item3": {
+        "text": "Symvii将我的方法转变为健康管理。",
+        "author": "詹姆斯·威尔逊",
+        "location": "格林威治，伦敦"
+      }
+    },
+    "navigation": {
+      "features": "特征",
+      "benefits": "好处",
+      "testimonials": "推荐",
+      "faqs": "常见问题解答",
+      "tools": "工具",
+      "login": "登录",
+      "profile": "轮廓"
+    },
+    "tools": {
+      "bmiCalculator": "BMI计算器",
+      "aiDoctor": "AI医生",
+      "symptomsTracker": "症状跟踪器",
+      "medicalHistory": "病史"
+    },
+    "branding": {
+      "name": "Symvii",
+      "logoAltDark": "Symvii徽标黑暗",
+      "logoAltLight": "Symvii徽标灯"
+    },
+    "hero": {
+      "title": "您的个人AI驱动健康助理",
+      "learnMore": "了解更多",
+      "tabs": {
+        "symptoms": {
+          "label": "症状",
+          "title": "跟踪症状",
+          "description": "随着时间的推移记录并监控症状。"
+        },
+        "diagnosis": {
+          "label": "诊断",
+          "title": "AI辅助诊断",
+          "description": "我们的高级AI有助于根据您的症状和病史来识别潜在的健康问题。"
+        },
+        "treatment": {
+          "label": "治疗",
+          "title": "个性化的治疗计划",
+          "description": "收到量身定制的治疗建议，并跟踪您的进度，以改善健康。"
+        }
+      }
+    },
+    "healthMonitoring": {
+      "title": "精确的健康监测系统",
+      "description": "通过Symvii的创新AI驱动解决方案赋予您的健康旅程，为大伦敦提供更好的管理。",
+      "trackNow": "立即跟踪",
+      "imageAlt": "健康监测背景"
+    },
+    "features": {
+      "title": "为了更好地了解您的健康。",
+      "description": "Symvii创建了创新的医疗保健管理软件，以帮助个人控制自己的福祉。",
+      "learnMore": "了解更多"
+    },
+    "featuresGrid": {
+      "title": "轻松跟踪健康",
+      "items": {
+        "monitoring": {
+          "title": "个性化的健康监测",
+          "description": "通过根据您的独特需求量身定制的AI驱动见解来跟踪您的健康状况。"
+        },
+        "alerts": {
+          "title": "实时条件警报",
+          "description": "接收有关健康状况任何重大变化的即时通知。"
+        },
+        "analysis": {
+          "title": "全面的数据分析",
+          "description": "通过详细的数据分析，深入了解您的健康趋势。"
+        },
+        "integration": {
+          "title": "无缝集成解决方案",
+          "description": "轻松将我们的跟踪工具与您现有的医疗保健系统集成在一起。"
+        }
+      }
+    },
+    "benefits": {
+      "title": {
+        "highlight": "好处",
+        "main": "不仅仅是健康期刊"
+      },
+      "items": {
+        "analysis": {
+          "title": "AI驱动的健康分析",
+          "description": "我们先进的AI技术提供了全面的健康评估，可帮助您了解身体的信号和潜在的健康问题。",
+          "imageAlt": "AI健康分析"
+        },
+        "monitoring": {
+          "title": "持续的健康监测",
+          "description": "随着时间的流逝，通过我们的直观监测功能跟踪生命体征，症状和药物，使您可以看到健康的模式和改善。",
+          "imageAlt": "健康监测"
+        },
+        "insights": {
+          "title": "专业的医学见解",
+          "description": "根据您的病史和当前症状，接受个性化的健康建议和见解，并由医疗保健专业人员验证。",
+          "imageAlt": "医学见解"
+        }
+      }
+    },
+    "locationSpecific": {
+      "title": "用Symvii在大伦敦管理慢性病",
+      "description": "Symvii为寻求诊断的人提供了AI驱动的症状报告和健康跟踪。"
+    },
+    "faqs": {
+      "title": {
+        "question": "问题？",
+        "answer": "答案。"
+      },
+      "items": {
+        "1": {
+          "title": "什么是Symvii，它如何工作？",
+          "content": "Symvii是一个全面的健康监测平台，它使用AI来帮助您记录症状，跟踪生命体征并管理整体健康。"
+        },
+        "2": {
+          "title": "SYMVII可以帮助监测哪些医疗状况？",
+          "content": "SYMVII旨在协助各种医疗状况，包括慢性疾病，心血管健康，呼吸系统疾病和一般健康监测。"
+        },
+        "3": {
+          "title": "AI在分析健康状况方面的准确性如何？",
+          "content": "我们的AI系统已接受了数百万病历的培训，并由医疗保健专业人员验证。"
+        },
+        "4": {
+          "title": "我的医疗数据是否可以使用SYMVII安全？",
+          "content": "绝对地。"
+        },
+        "5": {
+          "title": "如果Symvii确定潜在的健康问题，该怎么办？",
+          "content": "如果Symvii发现潜在的健康问题，它将提供有关该状况的详细信息，并建议适当的下一步，包括您是否应该咨询医疗保健提供者。"
+        }
+      }
+    },
+    "footer": {
+      "brand": {
+        "name": "Symvii",
+        "logoAlt": "Symvii徽标",
+        "description": "通过AI驱动的见解和个性化跟踪赋予医疗保健能力，使健康管理无缝且聪明。"
+      },
+      "navigation": {
+        "product": {
+          "title": "产品",
+          "items": {
+            "features": "特征",
+            "benefits": "好处",
+            "testimonials": "推荐"
+          }
+        },
+        "tools": {
+          "title": "工具",
+          "items": {
+            "bmiCalculator": "BMI计算器",
+            "aiDoctor": "AI医生",
+            "symptomsTracker": "症状跟踪器"
+          }
+        },
+        "support": {
+          "title": "支持",
+          "items": {
+            "faqs": "常见问题解答",
+            "contact": "接触"
+          }
+        },
+        "connect": {
+          "title": "连接",
+          "items": {
+            "twitter": "叽叽喳喳",
+            "linkedin": "LinkedIn",
+            "github": "github"
+          }
+        }
+      },
+      "copyright": {
+        "text": "©{年} Symvii。"
+      }
+    },
+    "contact": {
+      "title": "联系我们",
+      "form": {
+        "name": {
+          "label": "姓名"
+        },
+        "email": {
+          "label": "电子邮件"
+        },
+        "message": {
+          "label": "信息"
+        },
+        "submit": "发送消息"
+      },
+      "info": {
+        "title": "取得联系",
+        "description": "有问题或反馈吗？",
+        "contact": {
+          "phone": "+1（555）123-4567",
+          "email": "contact@symvii.com",
+          "address": "MC 12345 Health Street 123 Health Street"
+        }
+      }
+    },
+    "aiDoctor": {
+      "navigation": {
+        "home": "家",
+        "logo": {
+          "dark": "Symvii徽标黑暗",
+          "light": "Symvii徽标灯"
+        }
+      },
+      "consultation": {
+        "title": "AI医生咨询",
+        "form": {
+          "symptom": {
+            "label": "输入症状",
+            "placeholder": "在这里描述您的症状..."
+          },
+          "age": {
+            "label": "年龄",
+            "placeholder": "输入您的年龄"
+          },
+          "country": {
+            "label": "居住国或最近访问",
+            "placeholder": "进入国家"
+          },
+          "sex": {
+            "label": "出生时性爱",
+            "placeholder": "选择",
+            "options": {
+              "male": "男性",
+              "female": "女性",
+              "other": "其他"
+            }
+          },
+          "submit": {
+            "analyzing": "分析...",
+            "default": "提交"
+          }
+        }
+      },
+      "disclaimer": {
+        "title": "AI医生免责声明",
+        "description": "该AI医生仅出于信息目的，不取代专业的医疗建议，诊断或治疗。",
+        "point1": "提供一般健康信息",
+        "point2": "不能替代专业医疗建议",
+        "point3": "无法诊断特定条件",
+        "point4": "寻求紧急情况的立即医疗护理",
+        "reminder": "请记住，您的健康很重要。",
+        "learnMore": "了解有关医疗保健中AI的更多信息"
+      },
+      "analysis": {
+        "title": "AI医生的分析"
+      },
+      "error": {
+        "message": "处理您的请求时发生了错误。"
+      }
+    },
+    "bmiCalculator": {
+      "title": "BMI计算器",
+      "form": {
+        "height": {
+          "label": "高度",
+          "placeholder": {
+            "ft": "英尺",
+            "in": "在"
+          }
+        },
+        "weight": {
+          "label": "重量"
+        },
+        "units": {
+          "cm": "厘米",
+          "in": "在",
+          "ft": "英尺",
+          "kg": "公斤",
+          "lbs": "磅"
+        },
+        "calculate": "计算BMI"
+      },
+      "results": {
+        "bmi": "您的BMI",
+        "category": "类别",
+        "categories": {
+          "underweight": "体重不足",
+          "normal": "正常体重",
+          "overweight": "超重",
+          "obese": "肥胖"
+        },
+        "ranges": {
+          "underweight": "<18.5",
+          "normal": "18.5-24.9",
+          "overweight": "25-29.9",
+          "obese": "≥30"
+        }
+      },
+      "info": {
+        "title": "了解BMI",
+        "description": "体重指数（BMI）是基于身高和体重的体脂的简单度量。",
+        "categories": {
+          "underweight": "体重不足：BMI小于18.5",
+          "normal": "正常重量：BMI 18.5至24.9",
+          "overweight": "超重：BMI 25至29.9",
+          "obese": "肥胖：BMI 30或更高"
+        },
+        "disclaimer": "虽然BMI是一个有用的工具，但它并不是一个完美的方法。",
+        "learnMore": "了解有关BMI的更多信息"
+      }
+    },
+    "login": {
+      "title": {
+        "login": "登录",
+        "signup": "创建一个帐户"
+      },
+      "form": {
+        "email": {
+          "label": "电子邮件",
+          "placeholder": "输入您的电子邮件"
+        },
+        "password": {
+          "label": "密码",
+          "placeholder": "输入您的密码"
+        },
+        "name": {
+          "label": "姓名",
+          "placeholder": "输入您的全名"
+        },
+        "phone": {
+          "label": "电话号码",
+          "placeholder": "输入您的电话号码"
+        },
+        "country": {
+          "label": "国家",
+          "placeholder": "输入您的国家"
+        },
+        "submit": {
+          "login": "登入",
+          "signup": "创建账户",
+          "loading": "请稍等..."
+        }
+      },
+      "toggleAccount": {
+        "signup": "需要帐户吗？",
+        "login": "已经有一个帐户？"
+      },
+      "error": {
+        "invalidCredentials": "您输入的电子邮件或密码不正确",
+        "generic": "发生错误。"
+      },
+      "navigation": {
+        "home": "家",
+        "logo": {
+          "dark": "Symvii徽标黑暗",
+          "light": "Symvii徽标灯"
+        }
+      }
+    },
+    "profile": {
+      "navigation": {
+        "backToHome": "回到家"
+      },
+      "title": "配置文件设置",
+      "form": {
+        "name": {
+          "label": "姓名",
+          "placeholder": "输入您的名字"
+        },
+        "email": {
+          "label": "电子邮件",
+          "placeholder": "输入您的电子邮件"
+        },
+        "phone": {
+          "label": "电话",
+          "placeholder": "输入您的电话号码",
+          "error": "电话号码必须仅包含数字"
+        },
+        "country": {
+          "label": "国家",
+          "placeholder": "输入您的国家"
+        },
+        "password": {
+          "label": "密码",
+          "placeholder": "输入新密码",
+          "error": "密码必须至少为8个字符，带有1个大写字母，1个数字和1个符号"
+        }
+      },
+      "buttons": {
+        "logout": "注销",
+        "saveChanges": "保存更改"
+      },
+      "messages": {
+        "updateSuccess": "个人资料成功更新了"
+      }
+    },
+    "medicalHistory": {
+      "title": "病史",
+      "search": {
+        "placeholder": "搜索条件..."
+      },
+      "addCondition": {
+        "button": "增加医疗状况",
+        "title": "增加医疗状况",
+        "form": {
+          "title": {
+            "label": "条件标题",
+            "placeholder": "输入条件名称",
+            "error": "标题是必需的"
+          },
+          "description": {
+            "label": "描述",
+            "placeholder": "输入条件详细信息",
+            "error": "需要说明"
+          },
+          "medications": {
+            "label": "药物",
+            "placeholder": "输入药物名称",
+            "addButton": "添加",
+            "removeAriaLabel": "去除药物"
+          },
+          "diagnosisDate": {
+            "label": "诊断日期",
+            "placeholder": "选择日期"
+          },
+          "submit": "添加条件"
+        }
+      },
+      "conditionCard": {
+        "diagnosedLabel": "诊断",
+        "descriptionLabel": "描述",
+        "medicationsLabel": "药物",
+        "deleteButton": {
+          "label": "删除",
+          "ariaLabel": "删除条件"
+        }
+      },
+      "messages": {
+        "deleteError": "错误删除条件：",
+        "fetchError": "错误获取条件：",
+        "addError": "错误添加条件：",
+        "validation": {
+          "title": "标题是必需的",
+          "description": "需要说明"
+        }
+      },
+      "noConditions": "找不到医疗状况。",
+      "noMedications": "没有列出的药物",
+      "form": {
+        "date": {
+          "format": {
+            "long": {
+              "year": "数字",
+              "month": "长的",
+              "day": "数字"
+            }
+          }
+        }
+      },
+      "actions": {
+        "redirect": {
+          "login": "重定向到登录..."
+        }
+      }
+    },
+    "symptomsTracker": {
+      "title": "症状跟踪器",
+      "navigation": {
+        "home": "家"
+      },
+      "weekNavigation": {
+        "weekOverview": "周概述",
+        "futureWeekDisabled": "没有数据就无法导航到以后的几周"
+      },
+      "form": {
+        "date": {
+          "label": "选择日期"
+        },
+        "medicineName": {
+          "title": "药品",
+          "label": "药物名称",
+          "placeholder": "输入药物名称",
+          "error": "需要药名"
+        },
+        "dosage": {
+          "label": "剂量",
+          "placeholder": "输入剂量",
+          "error": "需要剂量",
+          "futureDate": "无法为将来的日期添加数据"
+        },
+        "unit": {
+          "label": "单元",
+          "error": "需要单位",
+          "options": {
+            "mg": "毫克",
+            "g": "g",
+            "ml": "ML",
+            "mcg": "MCG",
+            "IU": "IU",
+            "tablets": "平板电脑",
+            "capsules": "胶囊"
+          }
+        },
+        "symptom": {
+          "label": "症状",
+          "placeholder": "输入症状（可选）"
+        }
+      },
+      "buttons": {
+        "addRecord": "我的记录",
+        "addDosage": "添加剂量",
+        "export": "出口",
+        "delete": "删除",
+        "save": "节省",
+        "cancel": "取消",
+        "createGraph": "创建图形"
+      },
+      "dialog": {
+        "addRecord": {
+          "title": "添加新症状记录",
+          "graphName": {
+            "label": "图名称",
+            "placeholder": "输入图形名称"
+          },
+          "symptomName": {
+            "label": "症状名称",
+            "placeholder": "输入症状名称"
+          }
+        },
+        "updateDosage": {
+          "title": "更新剂量"
+        }
+      },
+      "messages": {
+        "loadError": "错误加载图：",
+        "saveError": "错误保存图："
+      },
+      "dateFormat": {
+        "display": {
+          "month": "短的",
+          "day": "数字",
+          "year": "数字"
+        }
+      },
+      "footer": {
+        "description": "通过AI驱动的见解和个性化跟踪赋予医疗保健能力，使健康管理无缝且聪明。",
+        "sections": {
+          "support": {
+            "title": "支持",
+            "faqs": "常见问题解答",
+            "contact": "接触"
+          },
+          "connect": {
+            "title": "连接",
+            "twitter": "叽叽喳喳",
+            "linkedin": "LinkedIn",
+            "github": "github"
+          }
+        },
+        "copyright": "©{年} Symvii。"
+      }
+    }
+  }

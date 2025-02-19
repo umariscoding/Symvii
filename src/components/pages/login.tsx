@@ -11,6 +11,7 @@ import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { toggleDarkMode, initializeTheme } from '@/redux/features/themeSlice';
 import { login, signup, clearError } from '@/redux/features/authSlice';
 import { useRouter } from 'next/navigation';
+import { useTranslation } from 'react-i18next';
 
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,6 +21,7 @@ export default function LoginPage() {
   const router = useRouter();
   const error = useAppSelector((state) => state.auth.error);
   const loading = useAppSelector((state) => state.auth.loading);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(initializeTheme());
@@ -99,10 +101,12 @@ export default function LoginPage() {
                       className="w-full h-full object-contain"
                     />
                   </div>
-                  <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">Symvii</span>
+                  <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">
+                    {t('branding.name')}
+                  </span>
                 </Link>
                 <Link href="/" className="text-[#4A4947] dark:text-[#D8D2C2] hover:text-[#B17457] dark:hover:text-[#B17457]">
-                  Home
+                  {t('login.navigation.home')}
                 </Link>
               </div>
               <Button onClick={handleDarkModeToggle} variant="ghost" size="icon">
@@ -127,12 +131,12 @@ export default function LoginPage() {
               >
                 <p className="text-red-600 dark:text-red-400 text-sm text-center">
                   {error === 'Invalid email or password' 
-                    ? 'The email or password you entered is incorrect'
+                    ? t('login.error.invalidCredentials')
                     : error}
                 </p>
               </div>
               <h2 className="text-2xl font-bold mb-6 text-center text-[#4A4947] dark:text-[#FAF7F0]">
-                {isLogin ? "Login" : "Create an Account"}
+                {isLogin ? t('login.title.login') : t('login.title.signup')}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {!isLogin && (
@@ -142,7 +146,7 @@ export default function LoginPage() {
                         htmlFor="name"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Full Name
+                        {t('login.form.name.label')}
                       </Label>
                       <div className="mt-1 relative">
                         <Input
@@ -150,6 +154,7 @@ export default function LoginPage() {
                           name="name"
                           type="text"
                           required
+                          placeholder={t('login.form.name.placeholder')}
                           className="pl-10 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                         />
                         <User className="h-5 w-5 text-primary absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -161,7 +166,7 @@ export default function LoginPage() {
                         htmlFor="phone"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Phone Number
+                        {t('login.form.phone.label')}
                       </Label>
                       <div className="mt-1 relative">
                         <Input
@@ -169,6 +174,7 @@ export default function LoginPage() {
                           name="phone"
                           type="tel"
                           required
+                          placeholder={t('login.form.phone.placeholder')}
                           className="pl-10 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                         />
                         <Phone className="h-5 w-5 text-primary absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -177,17 +183,18 @@ export default function LoginPage() {
 
                     <div>
                       <Label
-                        htmlFor="Country"
+                        htmlFor="country"
                         className="text-[#4A4947] dark:text-[#FAF7F0]"
                       >
-                        Country
+                        {t('login.form.country.label')}
                       </Label>
                       <div className="mt-1 relative">
                         <Input
-                          id="Country"
+                          id="country"
                           name="Country"
                           type="text"
                           required
+                          placeholder={t('login.form.country.placeholder')}
                           className="pl-10 w-full shadow-sm dark:shadow-background-dark/20 border-background-secondary-light dark:border-primary focus:border-primary dark:focus:border-background-secondary-light bg-white dark:bg-background-dark"
                         />
                         <MapPin className="h-5 w-5 text-primary absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -201,7 +208,7 @@ export default function LoginPage() {
                     htmlFor="email"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Email address
+                    {t('login.form.email.label')}
                   </Label>
                   <div className="mt-1 relative">
                     <Input
@@ -222,7 +229,7 @@ export default function LoginPage() {
                     htmlFor="password"
                     className="text-[#4A4947] dark:text-[#FAF7F0]"
                   >
-                    Password
+                    {t('login.form.password.label')}
                   </Label>
                   <div className="mt-1 relative">
                     <Input
@@ -258,162 +265,167 @@ export default function LoginPage() {
                   onClick={() => setIsLogin(!isLogin)}
                   className="text-[#B17457] hover:text-[#B17457]/80 transition-colors duration-300"
                 >
-                  {isLogin
-                    ? "Need an account? Sign up"
-                    : "Already have an account? Sign in"}
+                  {isLogin ? t('login.toggleAccount.signup') : t('login.toggleAccount.login')}
                 </button>
               </div>
             </CardContent>
           </Card>
         </div>
       </div>
-      <footer className="bg-[#FAF7F0] dark:bg-[#4A4947] py-12 border-t border-[#B17457]">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center space-x-2">
-                <div className="h-12 w-12 flex items-center justify-center">
-                  <Image
-                    src={darkMode ? "/Artboard-2.svg" : "/Artboard-1.svg"}
-                    alt={darkMode ? "Symvii Logo Dark" : "Symvii Logo Light"}
-                    width={48}
-                    height={48}
-                    priority
-                    className="w-full h-full object-contain"
-                  />
+      <footer className="bg-[#4A4947] dark:bg-[#2A2927] py-16">
+          <div className="container mx-auto px-4">
+            {/* Top Section */}
+            <div className="flex flex-col md:flex-row justify-between items-start mb-12 space-y-8 md:space-y-0">
+              {/* Brand Section */}
+              <div className="max-w-sm">
+                <Link href="/" className="flex items-center space-x-3 mb-6">
+                  <div className="h-10 w-10">
+                    <Image
+                      src="/Artboard-2.svg"
+                      alt="Symvii Logo"
+                      width={40}
+                      height={40}
+                      priority
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span className="text-2xl font-bold text-white">{t('footer.brand.name')}</span>
+                </Link>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {t('footer.brand.description')}
+                </p>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-x-16 gap-y-8">
+                <div>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.product.title')}</h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link
+                        href="#features"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.product.items.features')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#benefits"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.product.items.benefits')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#testimonials"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.product.items.testimonials')}
+                      </Link>
+                    </li>
+                  </ul>
                 </div>
-                <span className="text-xl font-semibold text-[#B17457] dark:text-[#D8D2C2]">
-                  Symvii
-                </span>
-              </Link>
-              <p className="text-[#4A4947] dark:text-[#FAF7F0]">
-                Your intelligent healthcare companion
-              </p>
+
+                <div>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.tools.title')}</h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link
+                        href="/bmi-calculator"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.tools.items.bmiCalculator')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/ai-doctor"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.tools.items.aiDoctor')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/symptoms-tracker"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.tools.items.symptomsTracker')}
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.support.title')}</h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link
+                        href="#faqs"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.support.items.faqs')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="#contact"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.support.items.contact')}
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-white font-semibold mb-4">{t('footer.navigation.connect.title')}</h3>
+                  <ul className="space-y-3">
+                    <li>
+                      <Link
+                        href="https://twitter.com/symvii"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.connect.items.twitter')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="https://linkedin.com/company/symvii"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.connect.items.linkedin')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="https://github.com/symvii"
+                        target="_blank"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
+                      >
+                        {t('footer.navigation.connect.items.github')}
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-[#4A4947] dark:text-[#FAF7F0]">
-                Product
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#features"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#benefits"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Benefits
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#testimonials"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Testimonials
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#faqs"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    FAQs
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-[#4A4947] dark:text-[#FAF7F0]">
-                Company
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Press
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Blog
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-[#4A4947] dark:text-[#FAF7F0]">
-                Legal
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    Cookie Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-[#4A4947] dark:text-[#FAF7F0] hover:text-[#B17457] dark:hover:text-[#B17457]"
-                  >
-                    HIPAA Compliance
-                  </Link>
-                </li>
-              </ul>
+
+            {/* Bottom Section */}
+            <div className="pt-8 border-t border-gray-700">
+              <div className="text-center">
+                <p className="text-gray-400 text-sm">
+                  &copy; {new Date().getFullYear()} Symvii. All rights reserved.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-[#B17457] text-center text-[#4A4947] dark:text-[#FAF7F0]">
-            <p>&copy; 2023 Symvii. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-      {error && (
+        </footer>
+    {error && (
         <div className="mt-4 text-red-500 text-center">
           {error}
         </div>

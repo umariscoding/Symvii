@@ -1,0 +1,572 @@
+{
+    "testimonials": {
+      "title": "ユーザーの言うこと",
+      "item1": {
+        "text": "SymviiのAIヘルストラッキングは、私の日常生活に革命をもたらしました。",
+        "author": "オリバー・スミス",
+        "location": "カリフォルニア州サンフランシスコ"
+      },
+      "item2": {
+        "text": "Symviiは、私の健康を管理するためのゲームチェンジャーです。",
+        "author": "エマ・トンプソン",
+        "location": "ニューヨーク州ニューヨーク市"
+      },
+      "item3": {
+        "text": "Symviiは、健康管理への私のアプローチを変えました。",
+        "author": "ジェームズ・ウィルソン",
+        "location": "グリニッジ、ロンドン"
+      }
+    },
+    "navigation": {
+      "features": "特徴",
+      "benefits": "利点",
+      "testimonials": "証言",
+      "faqs": "FAQ",
+      "tools": "ツール",
+      "login": "ログイン",
+      "profile": "プロフィール"
+    },
+    "tools": {
+      "bmiCalculator": "BMI計算機",
+      "aiDoctor": "AIドクター",
+      "symptomsTracker": "症状トラッカー",
+      "medicalHistory": "病歴"
+    },
+    "branding": {
+      "name": "symvii",
+      "logoAltDark": "Symviiロゴダーク",
+      "logoAltLight": "symviiロゴライト"
+    },
+    "hero": {
+      "title": "あなたの個人的なAI駆動の健康アシスタント",
+      "learnMore": "もっと詳しく知る",
+      "tabs": {
+        "symptoms": {
+          "label": "症状",
+          "title": "症状を追跡します",
+          "description": "時間の経過とともに症状を記録して監視します。"
+        },
+        "diagnosis": {
+          "label": "診断",
+          "title": "AIアシスト診断",
+          "description": "私たちの高度なAIは、あなたの症状と病歴に基づいて潜在的な健康問題を特定するのに役立ちます。"
+        },
+        "treatment": {
+          "label": "処理",
+          "title": "パーソナライズされた治療計画",
+          "description": "カスタマイズされた治療の推奨事項を受け取り、より良い健康に向けて進捗を追跡します。"
+        }
+      }
+    },
+    "healthMonitoring": {
+      "title": "正確な健康監視システム",
+      "description": "Symviiの革新的なAI主導のソリューションであなたの健康の旅を強化し、グレーターロンドンでより良い管理のための正確な洞察を提供します。",
+      "trackNow": "今すぐ追跡します",
+      "imageAlt": "健康監視の背景"
+    },
+    "features": {
+      "title": "あなたの健康をよりよく理解するために建てられました。",
+      "description": "Symviiは、個人が自分の幸福をコントロールできるようにするための革新的なヘルスケア管理ソフトウェアを作成します。",
+      "learnMore": "もっと詳しく知る"
+    },
+    "featuresGrid": {
+      "title": "健康を簡単に追跡できます",
+      "items": {
+        "monitoring": {
+          "title": "パーソナライズされた健康監視",
+          "description": "あなたの独自のニーズに合わせたAI主導の洞察を使用して、あなたの健康状態を追跡します。"
+        },
+        "alerts": {
+          "title": "リアルタイムの状態アラート",
+          "description": "健康状態の大幅な変化に関する即時通知を受け取ります。"
+        },
+        "analysis": {
+          "title": "包括的なデータ分析",
+          "description": "詳細なデータ分析を通じて、健康の傾向をより深く理解してください。"
+        },
+        "integration": {
+          "title": "シームレスな統合ソリューション",
+          "description": "追跡ツールを既存のヘルスケアシステムと簡単に統合できます。"
+        }
+      }
+    },
+    "benefits": {
+      "title": {
+        "highlight": "利点",
+        "main": "単なる健康ジャーナル以上のもの"
+      },
+      "items": {
+        "analysis": {
+          "title": "AI搭載の健康分析",
+          "description": "当社の高度なAIテクノロジーは、包括的な健康評価を提供し、身体のシグナルと潜在的な健康上の懸念を理解するのに役立ちます。",
+          "imageAlt": "AI健康分析"
+        },
+        "monitoring": {
+          "title": "継続的な健康監視",
+          "description": "直感的な監視機能を備えたバイタルサイン、症状、および薬を時間の経過とともに追跡し、健康のパターンと改善を確認できます。",
+          "imageAlt": "健康監視"
+        },
+        "insights": {
+          "title": "専門的な医療洞察",
+          "description": "医療専門家によって検証された、病歴と現在の症状に基づいて、パーソナライズされた健康の推奨事項と洞察を受け取ります。",
+          "imageAlt": "医学的洞察"
+        }
+      }
+    },
+    "locationSpecific": {
+      "title": "グレーターロンドンのSymviiで慢性疾患を管理します",
+      "description": "Symviiは、診断を求めている人のためにAIを搭載した症状報告と健康追跡を提供します。"
+    },
+    "faqs": {
+      "title": {
+        "question": "質問？",
+        "answer": "回答。"
+      },
+      "items": {
+        "1": {
+          "title": "symviiとは何ですか？それはどのように機能しますか？",
+          "content": "Symviiは、AIを使用して症状を記録し、バイタルサインを追跡し、全体的な健康を管理するのに役立つ包括的な健康監視プラットフォームです。"
+        },
+        "2": {
+          "title": "Symviiはどの病状を監視に役立ちますか？",
+          "content": "Symviiは、慢性疾患、心血管の健康、呼吸器疾患、一般的なウェルネスモニタリングなど、幅広い病状を支援するように設計されています。"
+        },
+        "3": {
+          "title": "健康状態の分析においてAIはどれくらい正確ですか？",
+          "content": "私たちのAIシステムは、何百万人もの医療記録で訓練され、医療専門家によって検証されています。"
+        },
+        "4": {
+          "title": "私の医療データはSymviiで安全ですか？",
+          "content": "絶対に。"
+        },
+        "5": {
+          "title": "Symviiが潜在的な健康上の懸念を特定した場合、私はどうすればよいですか？",
+          "content": "symviiが潜在的な健康上の懸念を検出した場合、条件に関する詳細情報を提供し、医療提供者に相談する必要があるかどうかなど、適切な次のステップを推奨します。"
+        }
+      }
+    },
+    "footer": {
+      "brand": {
+        "name": "symvii",
+        "logoAlt": "Symviiロゴ",
+        "description": "AI主導の洞察とパーソナライズされた追跡を通じてヘルスケアに力を与え、健康管理をシームレスでインテリジェントにします。"
+      },
+      "navigation": {
+        "product": {
+          "title": "製品",
+          "items": {
+            "features": "特徴",
+            "benefits": "利点",
+            "testimonials": "証言"
+          }
+        },
+        "tools": {
+          "title": "ツール",
+          "items": {
+            "bmiCalculator": "BMI計算機",
+            "aiDoctor": "AIドクター",
+            "symptomsTracker": "症状トラッカー"
+          }
+        },
+        "support": {
+          "title": "サポート",
+          "items": {
+            "faqs": "FAQ",
+            "contact": "接触"
+          }
+        },
+        "connect": {
+          "title": "接続する",
+          "items": {
+            "twitter": "ツイッター",
+            "linkedin": "LinkedIn",
+            "github": "github"
+          }
+        }
+      },
+      "copyright": {
+        "text": "©{year} symvii。"
+      }
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "form": {
+        "name": {
+          "label": "名前"
+        },
+        "email": {
+          "label": "メール"
+        },
+        "message": {
+          "label": "メッセージ"
+        },
+        "submit": "メッセージを送信します"
+      },
+      "info": {
+        "title": "連絡してください",
+        "description": "質問やフィードバックがありますか？",
+        "contact": {
+          "phone": "+1（555）123-4567",
+          "email": "contact@symvii.com",
+          "address": "123 Health Street、Med City、MC 12345"
+        }
+      }
+    },
+    "aiDoctor": {
+      "navigation": {
+        "home": "家",
+        "logo": {
+          "dark": "Symviiロゴダーク",
+          "light": "symviiロゴライト"
+        }
+      },
+      "consultation": {
+        "title": "AI医師の相談",
+        "form": {
+          "symptom": {
+            "label": "症状を入力します",
+            "placeholder": "ここであなたの症状を説明してください..."
+          },
+          "age": {
+            "label": "年",
+            "placeholder": "あなたの年齢を入力してください"
+          },
+          "country": {
+            "label": "居住国または最近訪れた国",
+            "placeholder": "国に入ります"
+          },
+          "sex": {
+            "label": "出生時のセックス",
+            "placeholder": "選択します",
+            "options": {
+              "male": "男",
+              "female": "女性",
+              "other": "他の"
+            }
+          },
+          "submit": {
+            "analyzing": "分析...",
+            "default": "提出する"
+          }
+        }
+      },
+      "disclaimer": {
+        "title": "AI Doctor免責事項",
+        "description": "このAIの医師は、情報提供のみを目的としており、専門的な医学的アドバイス、診断、または治療に取って代わるものではありません。",
+        "point1": "一般的な健康情報を提供します",
+        "point2": "専門的な医学的アドバイスに代わるものではありません",
+        "point3": "特定の状態を診断できません",
+        "point4": "緊急事態に即座に医師の診察を求めてください",
+        "reminder": "覚えておいてください、あなたの健康は重要です。",
+        "learnMore": "ヘルスケアのAIの詳細をご覧ください"
+      },
+      "analysis": {
+        "title": "AI医師の分析"
+      },
+      "error": {
+        "message": "リクエストの処理中にエラーが発生しました。"
+      }
+    },
+    "bmiCalculator": {
+      "title": "BMI計算機",
+      "form": {
+        "height": {
+          "label": "身長",
+          "placeholder": {
+            "ft": "ft",
+            "in": "で"
+          }
+        },
+        "weight": {
+          "label": "重さ"
+        },
+        "units": {
+          "cm": "cm",
+          "in": "で",
+          "ft": "ft",
+          "kg": "kg",
+          "lbs": "lbs"
+        },
+        "calculate": "BMIを計算します"
+      },
+      "results": {
+        "bmi": "あなたのbmi",
+        "category": "カテゴリ",
+        "categories": {
+          "underweight": "低体重",
+          "normal": "通常の重量",
+          "overweight": "太りすぎ",
+          "obese": "肥満"
+        },
+        "ranges": {
+          "underweight": "<18.5",
+          "normal": "18.5-24.9",
+          "overweight": "25-29.9",
+          "obese": "≥30"
+        }
+      },
+      "info": {
+        "title": "BMIの理解",
+        "description": "ボディマス指数（BMI）は、身長と体重に基づく体脂肪の単純な尺度です。",
+        "categories": {
+          "underweight": "低体重：BMIは18.5未満です",
+          "normal": "通常の重量：BMI 18.5〜24.9",
+          "overweight": "太りすぎ：BMI 25〜29.9",
+          "obese": "肥満：BMI 30以上"
+        },
+        "disclaimer": "BMIは便利なツールですが、完璧な尺度ではありません。",
+        "learnMore": "BMIの詳細をご覧ください"
+      }
+    },
+    "login": {
+      "title": {
+        "login": "ログイン",
+        "signup": "アカウントを作成する"
+      },
+      "form": {
+        "email": {
+          "label": "メール",
+          "placeholder": "メールを入力してください"
+        },
+        "password": {
+          "label": "パスワード",
+          "placeholder": "パスワードを入力してください"
+        },
+        "name": {
+          "label": "フルネーム",
+          "placeholder": "フルネームを入力してください"
+        },
+        "phone": {
+          "label": "電話番号",
+          "placeholder": "電話番号を入力してください"
+        },
+        "country": {
+          "label": "国",
+          "placeholder": "あなたの国に入ります"
+        },
+        "submit": {
+          "login": "サインイン",
+          "signup": "アカウントを作成する",
+          "loading": "お待ちください..."
+        }
+      },
+      "toggleAccount": {
+        "signup": "アカウントが必要ですか？",
+        "login": "すでにアカウントを持っていますか？"
+      },
+      "error": {
+        "invalidCredentials": "入力したメールまたはパスワードは間違っています",
+        "generic": "エラーが発生しました。"
+      },
+      "navigation": {
+        "home": "家",
+        "logo": {
+          "dark": "Symviiロゴダーク",
+          "light": "symviiロゴライト"
+        }
+      }
+    },
+    "profile": {
+      "navigation": {
+        "backToHome": "家に戻る"
+      },
+      "title": "プロファイル設定",
+      "form": {
+        "name": {
+          "label": "名前",
+          "placeholder": "あなたの名前を入力してください"
+        },
+        "email": {
+          "label": "メール",
+          "placeholder": "メールを入力してください"
+        },
+        "phone": {
+          "label": "電話",
+          "placeholder": "電話番号を入力してください",
+          "error": "電話番号には数字のみが含まれている必要があります"
+        },
+        "country": {
+          "label": "国",
+          "placeholder": "あなたの国に入ります"
+        },
+        "password": {
+          "label": "パスワード",
+          "placeholder": "新しいパスワードを入力します",
+          "error": "パスワードは、1つの大文字、1つの数字、1つのシンボルを持つ少なくとも8文字でなければなりません"
+        }
+      },
+      "buttons": {
+        "logout": "ログアウト",
+        "saveChanges": "変更を保存します"
+      },
+      "messages": {
+        "updateSuccess": "プロフィールが正常に更新されました"
+      }
+    },
+    "medicalHistory": {
+      "title": "病歴",
+      "search": {
+        "placeholder": "検索条件..."
+      },
+      "addCondition": {
+        "button": "病状を追加します",
+        "title": "病状を追加します",
+        "form": {
+          "title": {
+            "label": "条件タイトル",
+            "placeholder": "条件名を入力します",
+            "error": "タイトルが必要です"
+          },
+          "description": {
+            "label": "説明",
+            "placeholder": "条件の詳細を入力してください",
+            "error": "説明が必要です"
+          },
+          "medications": {
+            "label": "薬",
+            "placeholder": "薬の名前を入力してください",
+            "addButton": "追加",
+            "removeAriaLabel": "薬を削除します"
+          },
+          "diagnosisDate": {
+            "label": "診断日",
+            "placeholder": "[日付]を選択します"
+          },
+          "submit": "条件を追加します"
+        }
+      },
+      "conditionCard": {
+        "diagnosedLabel": "診断",
+        "descriptionLabel": "説明",
+        "medicationsLabel": "薬",
+        "deleteButton": {
+          "label": "消去",
+          "ariaLabel": "条件を削除します"
+        }
+      },
+      "messages": {
+        "deleteError": "エラー削除条件：",
+        "fetchError": "エラーフェッチ条件：",
+        "addError": "エラーの追加条件：",
+        "validation": {
+          "title": "タイトルが必要です",
+          "description": "説明が必要です"
+        }
+      },
+      "noConditions": "病状は見つかりませんでした。",
+      "noMedications": "薬はリストされていません",
+      "form": {
+        "date": {
+          "format": {
+            "long": {
+              "year": "数値",
+              "month": "長さ",
+              "day": "数値"
+            }
+          }
+        }
+      },
+      "actions": {
+        "redirect": {
+          "login": "ログインにリダイレクト..."
+        }
+      }
+    },
+    "symptomsTracker": {
+      "title": "症状トラッカー",
+      "navigation": {
+        "home": "家"
+      },
+      "weekNavigation": {
+        "weekOverview": "週の概要",
+        "futureWeekDisabled": "データなしで将来の週にナビゲートすることはできません"
+      },
+      "form": {
+        "date": {
+          "label": "[日付]を選択します"
+        },
+        "medicineName": {
+          "title": "薬",
+          "label": "薬の名前",
+          "placeholder": "薬の名前を入力してください",
+          "error": "薬の名前が必要です"
+        },
+        "dosage": {
+          "label": "投与量",
+          "placeholder": "投与量を入力します",
+          "error": "投与量が必要です",
+          "futureDate": "将来の日付のデータを追加できません"
+        },
+        "unit": {
+          "label": "ユニット",
+          "error": "ユニットが必要です",
+          "options": {
+            "mg": "mg",
+            "g": "g",
+            "ml": "ml",
+            "mcg": "MCG",
+            "IU": "iu",
+            "tablets": "タブレット",
+            "capsules": "カプセル"
+          }
+        },
+        "symptom": {
+          "label": "症状",
+          "placeholder": "症状を入力する（オプション）"
+        }
+      },
+      "buttons": {
+        "addRecord": "私の記録",
+        "addDosage": "投与量を追加します",
+        "export": "輸出",
+        "delete": "消去",
+        "save": "保存",
+        "cancel": "キャンセル",
+        "createGraph": "グラフを作成します"
+      },
+      "dialog": {
+        "addRecord": {
+          "title": "新しい症状記録を追加します",
+          "graphName": {
+            "label": "グラフ名",
+            "placeholder": "グラフ名を入力します"
+          },
+          "symptomName": {
+            "label": "症状名",
+            "placeholder": "症状名を入力します"
+          }
+        },
+        "updateDosage": {
+          "title": "投与量を更新します"
+        }
+      },
+      "messages": {
+        "loadError": "グラフの読み込みエラー：",
+        "saveError": "グラフの保存エラー："
+      },
+      "dateFormat": {
+        "display": {
+          "month": "短い",
+          "day": "数値",
+          "year": "数値"
+        }
+      },
+      "footer": {
+        "description": "AI主導の洞察とパーソナライズされた追跡を通じてヘルスケアに力を与え、健康管理をシームレスでインテリジェントにします。",
+        "sections": {
+          "support": {
+            "title": "サポート",
+            "faqs": "FAQ",
+            "contact": "接触"
+          },
+          "connect": {
+            "title": "接続する",
+            "twitter": "ツイッター",
+            "linkedin": "LinkedIn",
+            "github": "github"
+          }
+        },
+        "copyright": "©{year} symvii。"
+      }
+    }
+  }
