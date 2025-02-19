@@ -4,8 +4,16 @@ interface LanguageState {
   currentLanguage: string;
 }
 
+// Safe localStorage check for SSR
+const getInitialLanguage = () => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem('language') || 'en';
+  }
+  return 'en';
+};
+
 const initialState: LanguageState = {
-  currentLanguage: localStorage.getItem('language') || 'en',
+  currentLanguage: getInitialLanguage(),
 };
 
 const languageSlice = createSlice({
@@ -14,12 +22,16 @@ const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, action: PayloadAction<string>) => {
       state.currentLanguage = action.payload;
-      localStorage.setItem('language', action.payload);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('language', action.payload);
+      }
     },
     initializeLanguage: (state) => {
-      const savedLanguage = localStorage.getItem('language');
-      if (savedLanguage) {
-        state.currentLanguage = savedLanguage;
+      if (typeof window !== 'undefined') {
+        const savedLanguage = localStorage.getItem('language');
+        if (savedLanguage) {
+          state.currentLanguage = savedLanguage;
+        }
       }
     },
   },
