@@ -68,7 +68,7 @@ export default function AIDoctorPage() {
     e.preventDefault()
     setIsLoading(true)
     try {
-      const response = await fetch('http://localhost:8000/ai-doctor', {
+      const response = await fetch('https://symvii.com/api/ai-doctor', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -231,7 +231,7 @@ export default function SymptomsTrackerPage() {
     const loadGraphs = async () => {
       if (isAuthenticated) {
         try {
-          const response = await fetch('http://localhost:8000/api/medicine-graphs', {
+          const response = await fetch('https://symvii.com/api/api/medicine-graphs', {
             credentials: 'include'
           });
           const data = await response.json();
@@ -251,7 +251,7 @@ export default function SymptomsTrackerPage() {
     const saveGraphs = async () => {
       if (isAuthenticated && graphs.length > 0) {
         try {
-          await fetch('http://localhost:8000/api/medicine-graphs', {
+          await fetch('https://symvii.com/api/api/medicine-graphs', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

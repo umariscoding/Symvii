@@ -483,7 +483,7 @@ export default function MedicalHistoryPage() {
       if (isAuthenticated) {
         try {
           const response = await fetch(
-            "http://localhost:8000/api/medical-conditions",
+            "https://symvii.com/api/api/medical-conditions",
             {
               credentials: "include",
             }
@@ -525,7 +525,7 @@ export default function MedicalHistoryPage() {
       };
 
       const response = await fetch(
-        "http://localhost:8000/api/medical-conditions",
+        "https://symvii.com/api/api/medical-conditions",
         {
           method: "POST",
           headers: {
@@ -554,7 +554,7 @@ export default function MedicalHistoryPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await fetch(`http://localhost:8000/api/medical-conditions/${id}`, {
+      await fetch(`https://symvii.com/api/api/medical-conditions/${id}`, {
         method: "DELETE",
         credentials: "include",
       });
