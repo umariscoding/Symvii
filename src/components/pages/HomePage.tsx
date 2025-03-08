@@ -243,6 +243,7 @@ const LanguageSelector = () => {
   const dispatch = useAppDispatch();
   const { i18n } = useTranslation();
   const currentLanguage = useAppSelector((state) => state.language.currentLanguage);
+  const darkMode = useAppSelector((state) => state.theme.darkMode);
 
   const handleLanguageChange = (value: string) => {
     dispatch(setLanguage(value));
@@ -266,8 +267,9 @@ const LanguageSelector = () => {
   return (
     <Select value={currentLanguage} onValueChange={handleLanguageChange}>
       <SelectTrigger 
-        className="w-[100px] bg-white/10 border-none text-white hover:bg-white/20 
-                   transition-colors duration-200 focus:ring-0 focus:ring-offset-0"
+        className={`w-[100px] border-none text-white hover:bg-white/20 hover:text-black 
+                   transition-colors duration-200 focus:ring-0 focus:ring-offset-0
+                   ${darkMode ? 'bg-white/10' : 'bg-[#4A4947]/80'}`}
       >
         <SelectValue placeholder={languages[currentLanguage as keyof typeof languages]} />
       </SelectTrigger>
