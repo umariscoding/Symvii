@@ -38,7 +38,7 @@
     "logoAltLight": "Symvii Logo Light"
   },
   "hero": {
-    "title": "Your Personal AI-Powered Health Assistant",
+    "title": "Personal health monitoring system",
     "learnMore": "Learn more",
     "tabs": {
       "symptoms": {
@@ -59,14 +59,14 @@
     }
   },
   "healthMonitoring": {
-    "title": "Precise health monitoring system",
-    "description": "Empower your health journey with Symvii's innovative AI-driven solutions, delivering precise insights for better management in Greater London.",
+    "title": "Personal health monitoring system",
+    "description": "Empower your health journey with Symvii's innovative AI-driven solutions, delivering precise insights for better health management.",
     "trackNow": "Track now",
     "imageAlt": "Health Monitoring Background"
   },
   "features": {
     "title": "Built to understand your health better.",
-    "description": "Symvii creates innovative healthcare management software to help individuals take control of their well-being. Our AI-powered platform functions as a personal health companion, simplifying symptom tracking, vital sign monitoring, and maintaining a detailed medical history.",
+    "description": "Symvii is an innovative healthcare management software to help individuals take control of their well-being. Our AI-powered platform functions as a personal health companion, simplifying symptom tracking, vital sign monitoring, and maintaining a detailed medical history.",
     "learnMore": "Learn more"
   },
   "featuresGrid": {
@@ -98,7 +98,7 @@
     "items": {
       "analysis": {
         "title": "AI-Powered Health Analysis",
-        "description": "Our advanced AI technology provides comprehensive health assessments, helping you understand your body's signals and potential health concerns.",
+        "description": "Our advanced AI technology provides comprehensive health assessments, helping you understand your body's symptoms and potential health concerns.",
         "imageAlt": "AI Health Analysis"
       },
       "monitoring": {
@@ -114,8 +114,8 @@
     }
   },
   "locationSpecific": {
-    "title": "Manage Chronic Illness with Symvii in Greater London",
-    "description": "Symvii offers AI-powered symptom reporting and health tracking for those seeking a diagnosis. Based in Greater London, we help individuals with chronic illnesses monitor their conditions effectively. Trust Symvii to support your health journey."
+    "title": "Manage Chronic Illness with Symvii",
+    "description": "Symvii offers AI-powered symptom reporting and health tracking for those seeking a diagnosis. We help individuals with chronic illnesses monitor their conditions effectively. Trust Symvii to support your health journey."
   },
   "faqs": {
     "title": {

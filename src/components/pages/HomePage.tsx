@@ -49,7 +49,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 type Testimonial = {
   id: number;
   text: string;
-  author: string;
   location: string;
 };
 
@@ -62,19 +61,16 @@ const TestimonialSlider = () => {
     {
       id: 1,
       text: t('testimonials.item1.text'),
-      author: t('testimonials.item1.author'),
       location: t('testimonials.item1.location'),
     },
     {
       id: 2,
       text: t('testimonials.item2.text'),
-      author: t('testimonials.item2.author'),
       location: t('testimonials.item2.location'),
     },
     {
       id: 3,
       text: t('testimonials.item3.text'),
-      author: t('testimonials.item3.author'),
       location: t('testimonials.item3.location'),
     },
   ];
@@ -145,9 +141,6 @@ const TestimonialSlider = () => {
               </p>
 
               <div className="space-y-2">
-                <p className="font-semibold text-xl text-[#B17457]">
-                  {testimonials[currentIndex].author}
-                </p>
                 <p className="text-base text-[#4A4947]/80 dark:text-white/80">
                   {testimonials[currentIndex].location}
                 </p>
@@ -267,7 +260,7 @@ const LanguageSelector = () => {
   return (
     <Select value={currentLanguage} onValueChange={handleLanguageChange}>
       <SelectTrigger 
-        className={`w-[100px] border-none text-white hover:bg-white/20 hover:text-black 
+        className={`w-[80px] sm:w-[100px] ml-2 sm:ml-4 border-none text-white hover:bg-white/20 hover:text-black 
                    transition-colors duration-200 focus:ring-0 focus:ring-offset-0
                    ${darkMode ? 'bg-white/10' : 'bg-[#4A4947]/80'}`}
       >
@@ -275,7 +268,7 @@ const LanguageSelector = () => {
       </SelectTrigger>
       <SelectContent 
         className="bg-[#FAF7F0] dark:bg-[#4A4947] border-[#D8D2C2] dark:border-[#3A3937]
-                   min-w-[100px] z-50"
+                   min-w-[80px] sm:min-w-[100px] z-50"
       >
         {Object.entries(languages).map(([code, name]) => (
           <SelectItem 
@@ -525,6 +518,12 @@ export default function HomePage() {
                       >
                         Symptoms Tracker
                       </Link>
+                      <Link
+                        href="/medical-history"
+                        className="block text-sm text-[#4A4947] dark:text-[#D8D2C2] hover:text-[#B17457] dark:hover:text-[#B17457]"
+                      >
+                        Medical History
+                      </Link>
                     </div>
 
                     <Link href="/login">
@@ -553,7 +552,7 @@ export default function HomePage() {
         <div className="container mx-auto relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 text-white">
-              <h1 className="text-5xl font-bold leading-tight">
+              <h1 className="text-5xl font-bold leading-tight text-center md:text-left">
                 {t('hero.title')}
               </h1>
               {/* <p className="text-xl">
@@ -646,7 +645,7 @@ export default function HomePage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/assets/human1.jpg"
+            src="/assets/human.jpg"
             alt={t('healthMonitoring.imageAlt')}
             fill
             className="object-cover"
@@ -1090,7 +1089,7 @@ export default function HomePage() {
                       <Phone className="w-6 h-6 text-[#FAF7F0]" />
                     </div>
                     <span className="text-[#4A4947] dark:text-[#FAF7F0]">
-                      +1 (555) 123-4567
+                      07423 174341
                     </span>
                   </div>
                   <div className="flex items-center space-x-4">
@@ -1099,14 +1098,6 @@ export default function HomePage() {
                     </div>
                     <span className="text-[#4A4947] dark:text-[#FAF7F0]">
                       contact@symvii.com
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="bg-[#B17457] p-3 rounded-full">
-                      <MapPin className="w-6 h-6 text-[#FAF7F0]" />
-                    </div>
-                    <span className="text-[#4A4947] dark:text-[#FAF7F0]">
-                      123 Health Street, Med City, MC 12345
                     </span>
                   </div>
                 </div>
